@@ -370,7 +370,7 @@ export default function HealthcarePlus() {
               {[
                 { label: 'Home', href: '/', page: true },
                 { label: 'Services', href: '/services', page: true },
-                { label: 'About Us', href: '/about', page: true },
+                { label: 'About Us', href: '/aboutus', page: true },
                 { label: 'Contact', href: '/contact', page: true },
               ].map((item) => (
                 <li key={item.label}>
