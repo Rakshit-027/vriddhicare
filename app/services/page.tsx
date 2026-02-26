@@ -34,9 +34,9 @@ const ServiceCard = ({ icon, title, availability, description, features }: any) 
             </li>
           ))}
         </ul>
-        <button className="w-full md:w-auto px-8 py-4 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200">
+        <Link href="/appointment" className="w-full md:w-auto px-8 py-4 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200">
           Book {title}
-        </button>
+        </Link>
       </div>
     </motion.div>
   );
@@ -129,7 +129,7 @@ export default function ServicesPage() {
           </ul>
 
           <div className="flex items-center gap-4">
-            <button className="hidden sm:block px-6 py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-all">Book Appointment</button>
+            <Link href="/appointment" className="hidden sm:block px-6 py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-all">Book Appointment</Link>
             <button className="lg:hidden flex flex-col gap-1.5" onClick={() => setMenuOpen(!menuOpen)}>
               <span className={`w-6 h-0.5 bg-emerald-500 transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
               <span className={`w-6 h-0.5 bg-emerald-500 ${menuOpen ? 'opacity-0' : ''}`} />
@@ -249,7 +249,7 @@ export default function ServicesPage() {
           <h2 className="text-4xl font-bold mb-6">Need Medical Assistance?</h2>
           <p className="text-xl opacity-90 mb-10 max-w-xl mx-auto">Our healthcare professionals are ready to help you. Book an appointment today.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-10 py-4 bg-white text-emerald-600 font-bold rounded-lg hover:shadow-2xl transition-all">Schedule Appointment</button>
+            <Link href="/appointment" className="px-10 py-4 bg-white text-emerald-600 font-bold rounded-lg hover:shadow-2xl transition-all">Schedule Appointment</Link>
             <button className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-emerald-600 transition-all">Emergency: +1 (555) 123-4567</button>
           </div>
         </div>

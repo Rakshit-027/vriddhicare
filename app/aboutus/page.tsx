@@ -1,7 +1,7 @@
 'use client';
+import Link from 'next/link';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { motion, useInView, animate } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -118,7 +118,7 @@ export default function AboutPage() {
           </ul>
 
           <div className="flex items-center gap-5">
-            <button className="hidden sm:block px-7 py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-all shadow-md">Book Appointment</button>
+            <Link href="/appointment" className="hidden sm:block px-7 py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-all shadow-md">Book Appointment</Link>
             <button className="lg:hidden flex flex-col gap-1.5" onClick={() => setMenuOpen(!menuOpen)}>
               <span className={`w-6 h-0.5 bg-emerald-500 transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
               <span className={`w-6 h-0.5 bg-emerald-500 ${menuOpen ? 'opacity-0' : ''}`} />

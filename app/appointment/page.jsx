@@ -94,8 +94,7 @@ export default function AppointmentBooking() {
     <div className="min-h-screen bg-[#f8fafc] font-sans text-slate-900 pb-20">
       <nav className="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-white font-bold">H</div>
-          <span className="font-black text-xl tracking-tight">Health<span className="text-emerald-500">Care</span></span>
+          <img src="/log.png" alt="Logo" className="h-14" />
         </Link>
         <div className="hidden md:flex bg-white px-6 py-2 rounded-full shadow-sm border border-slate-100 gap-8 text-sm font-medium text-slate-500">
           <span className={step >= 1 ? "text-emerald-600 font-bold" : ""}>01 Details</span>

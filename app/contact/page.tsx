@@ -120,7 +120,7 @@ export default function ContactPage() {
               </li>
             ))}
           </ul>
-          <button className="hidden sm:block bg-emerald-500 text-white px-6 py-2.5 rounded-lg font-bold hover:bg-emerald-600">Book Appointment</button>
+          <Link href="/appointment" className="hidden sm:block bg-emerald-500 text-white px-6 py-2.5 rounded-lg font-bold hover:bg-emerald-600">Book Appointment</Link>
         </div>
       </nav>
 

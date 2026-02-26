@@ -364,7 +364,6 @@ export default function HealthcarePlus() {
         <div className="container">
           <div className="nav-wrapper">
             <a href="#home" className="logo" onClick={(e) => { e.preventDefault(); scrollTo('home'); }}>
-              {/* Replace with your actual logo path */}
               <img src="/log.png" alt="HealthCare Plus Logo" className="logo-img" />
             </a>
             <ul className={`nav-menu${menuOpen ? ' active' : ''}`}>
