@@ -369,7 +369,7 @@ export default function HealthcarePlus() {
             <ul className={`nav-menu${menuOpen ? ' active' : ''}`}>
               {[
                 { label: 'Home', href: '/', page: true },
-                { label: 'Services', href: '/service', page: true },
+                { label: 'Services', href: '/services', page: true },
                 { label: 'About Us', href: '/about', page: true },
                 { label: 'Contact', href: '/contact', page: true },
               ].map((item) => (
