@@ -48,20 +48,55 @@ export default function ContactPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API Call
-    setTimeout(() => {
+
+    try {
+      const payload = {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+      const response = await fetch(`${backendUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        setShowModal(true);
+        setFormData({ firstName: '', lastName: '', email: '', subject: '', message: '' });
+      } else {
+        const data = await response.json();
+        alert(data.message || 'Failed to submit form.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setShowModal(true);
-      (e.target as HTMLFormElement).reset();
-    }, 1500);
+    }
   };
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
-      
+
       {/* ── TOP BAR & NAVBAR (Consistent with Home/About) ── */}
       <div className="hidden lg:block bg-emerald-700 text-white py-2.5 text-sm">
         <div className="container mx-auto px-5 flex justify-between items-center">
@@ -109,7 +144,7 @@ export default function ContactPage() {
             { icon: '📍', title: 'Visit Us', info: '123 Medical Center Dr', sub: 'New York, NY 10001' },
             { icon: '🕐', title: 'Hours', info: '8:00 AM - 8:00 PM', sub: 'Sun: Emergency Only' },
           ].map((card, i) => (
-            <motion.div 
+            <motion.div
               key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
               className="bg-white p-8 rounded-2xl shadow-xl text-center hover:-translate-y-2 transition-transform border border-gray-50"
             >
@@ -128,25 +163,25 @@ export default function ContactPage() {
           <div className="bg-white">
             <span className="bg-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold mb-4 inline-block tracking-wider">SEND MESSAGE</span>
             <h2 className="text-4xl font-bold mb-6">Contact Our Support Team</h2>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-gray-700">First Name *</label>
-                  <input required type="text" className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all" placeholder="John" />
+                  <input required type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all" placeholder="John" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-gray-700">Last Name *</label>
-                  <input required type="text" className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all" placeholder="Doe" />
+                  <input required type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all" placeholder="Doe" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-bold text-gray-700">Email Address *</label>
-                <input required type="email" className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all" placeholder="john@example.com" />
+                <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all" placeholder="john@example.com" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-bold text-gray-700">Subject *</label>
-                <select required className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all bg-white">
+                <select required name="subject" value={formData.subject} onChange={handleChange} className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all bg-white">
                   <option value="">Select a subject</option>
                   <option value="appointment">Appointment Booking</option>
                   <option value="inquiry">General Inquiry</option>
@@ -155,7 +190,7 @@ export default function ContactPage() {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-bold text-gray-700">Message *</label>
-                <textarea required rows={5} className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all" placeholder="How can we help you?"></textarea>
+                <textarea required name="message" value={formData.message} onChange={handleChange} rows={5} className="w-full p-4 border-2 border-gray-100 rounded-xl focus:border-emerald-500 outline-none transition-all" placeholder="How can we help you?"></textarea>
               </div>
               <button disabled={isSubmitting} type="submit" className="w-full bg-emerald-500 text-white p-4 rounded-xl font-bold hover:bg-emerald-600 transition-all flex justify-center items-center gap-2">
                 {isSubmitting ? 'Sending...' : 'Send Message →'}
@@ -165,7 +200,7 @@ export default function ContactPage() {
 
           <div className="space-y-8">
             <div className="rounded-2xl overflow-hidden shadow-2xl h-[400px] grayscale hover:grayscale-0 transition-all duration-700">
-              <iframe 
+              <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
                 width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
               ></iframe>
@@ -215,102 +250,102 @@ export default function ContactPage() {
 
       {/* ── FOOTER ── */}
       <footer className="bg-slate-900 text-white pt-20">
-  <div className="container mx-auto px-5">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-slate-800">
-      {/* Brand Column */}
-      <div>
-        <div className="flex items-center gap-2 text-2xl font-bold text-emerald-500 mb-6">
-          <span className="w-10 h-10 bg-emerald-500 text-white flex items-center justify-center rounded-lg">+</span>
-          HealthCare Plus
-        </div>
-        <p className="text-slate-400 text-sm leading-relaxed mb-8">
-          Providing quality healthcare services with compassion and excellence. Your health is our priority.
-        </p>
-        <div className="flex gap-4">
-          {['f', 'in', 't', 'i'].map((social) => (
-            <div
-              key={social}
-              className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 cursor-pointer transition-all"
-            >
-              <span className="text-xs font-bold uppercase">{social}</span>
+        <div className="container mx-auto px-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-slate-800">
+            {/* Brand Column */}
+            <div>
+              <div className="flex items-center gap-2 text-2xl font-bold text-emerald-500 mb-6">
+                <span className="w-10 h-10 bg-emerald-500 text-white flex items-center justify-center rounded-lg">+</span>
+                HealthCare Plus
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                Providing quality healthcare services with compassion and excellence. Your health is our priority.
+              </p>
+              <div className="flex gap-4">
+                {['f', 'in', 't', 'i'].map((social) => (
+                  <div
+                    key={social}
+                    className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 cursor-pointer transition-all"
+                  >
+                    <span className="text-xs font-bold uppercase">{social}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-bold mb-8">Quick Links</h4>
+              <ul className="space-y-4 text-slate-400 text-sm">
+                {['Home', 'Services', 'About Us', 'Contact'].map((link) => (
+                  <li key={link}>
+                    <Link href="#" className="hover:text-emerald-500 transition-colors">
+                      {link}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services Links */}
+            <div>
+              <h4 className="text-lg font-bold mb-8">Services</h4>
+              <ul className="space-y-4 text-slate-400 text-sm">
+                {['Emergency Care', 'Cardiology', 'Laboratory', 'Pharmacy', 'Health Checkup'].map((service) => (
+                  <li key={service}>
+                    <Link href="#" className="hover:text-emerald-500 transition-colors">
+                      {service}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-lg font-bold mb-8">Contact Info</h4>
+              <ul className="space-y-4 text-slate-400 text-sm">
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">📍</span>
+                  123 Medical Center Drive, NY 10001
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">📞</span>
+                  +1 (555) 123-4567
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">✉️</span>
+                  info@healthcareplus.com
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">🕐</span>
+                  Mon-Sat: 8:00 AM - 8:00 PM
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Footer */}
+          <div className="py-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
+            <p>© 2026 HealthCare Plus. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="#" className="hover:text-emerald-500">Privacy Policy</Link>
+              <Link href="#" className="hover:text-emerald-500">Terms of Service</Link>
+              <Link href="#" className="hover:text-emerald-500">Cookie Policy</Link>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Quick Links */}
-      <div>
-        <h4 className="text-lg font-bold mb-8">Quick Links</h4>
-        <ul className="space-y-4 text-slate-400 text-sm">
-          {['Home', 'Services', 'About Us', 'Contact'].map((link) => (
-            <li key={link}>
-              <Link href="#" className="hover:text-emerald-500 transition-colors">
-                {link}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Services Links */}
-      <div>
-        <h4 className="text-lg font-bold mb-8">Services</h4>
-        <ul className="space-y-4 text-slate-400 text-sm">
-          {['Emergency Care', 'Cardiology', 'Laboratory', 'Pharmacy', 'Health Checkup'].map((service) => (
-            <li key={service}>
-              <Link href="#" className="hover:text-emerald-500 transition-colors">
-                {service}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Contact Info */}
-      <div>
-        <h4 className="text-lg font-bold mb-8">Contact Info</h4>
-        <ul className="space-y-4 text-slate-400 text-sm">
-          <li className="flex gap-3">
-            <span className="text-emerald-500">📍</span>
-            123 Medical Center Drive, NY 10001
-          </li>
-          <li className="flex gap-3">
-            <span className="text-emerald-500">📞</span>
-            +1 (555) 123-4567
-          </li>
-          <li className="flex gap-3">
-            <span className="text-emerald-500">✉️</span>
-            info@healthcareplus.com
-          </li>
-          <li className="flex gap-3">
-            <span className="text-emerald-500">🕐</span>
-            Mon-Sat: 8:00 AM - 8:00 PM
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    {/* Bottom Footer */}
-    <div className="py-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
-      <p>© 2026 HealthCare Plus. All rights reserved.</p>
-      <div className="flex gap-6">
-        <Link href="#" className="hover:text-emerald-500">Privacy Policy</Link>
-        <Link href="#" className="hover:text-emerald-500">Terms of Service</Link>
-        <Link href="#" className="hover:text-emerald-500">Cookie Policy</Link>
-      </div>
-    </div>
-  </div>
-</footer>
+      </footer>
 
       {/* ── SUCCESS MODAL ── */}
       <AnimatePresence>
         {showModal && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/50 z-[10001] flex items-center justify-center p-5"
             onClick={() => setShowModal(false)}
           >
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }}
               className="bg-white p-10 rounded-3xl text-center max-w-sm shadow-2xl"
               onClick={e => e.stopPropagation()}

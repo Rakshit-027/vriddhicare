@@ -382,7 +382,7 @@ export default function HealthcarePlus() {
               ))}
             </ul>
             <div className="nav-actions">
-              <button className="btn-appointment">Book Appointment</button>
+              <Link href="/appointment" className="btn-appointment" style={{ textDecoration: 'none', display: 'inline-block' }}>Book Appointment</Link>
               <button
                 className="menu-toggle"
                 onClick={() => setMenuOpen((o) => !o)}
@@ -410,7 +410,7 @@ export default function HealthcarePlus() {
                 We're committed to your well-being with advanced technology and personalized treatment plans.
               </p>
               <div className="hero-buttons">
-                <button className="btn btn-primary">Get Started</button>
+                <Link href="/appointment" className="btn btn-primary" style={{ textDecoration: 'none' }}>Get Started</Link>
                 <button className="btn btn-secondary">
                   <span className="play-icon">▶</span>
                   Watch Video
@@ -682,8 +682,8 @@ export default function HealthcarePlus() {
             <h2 className="cta-title">Ready to Get Started?</h2>
             <p className="cta-text">Book an appointment today and experience world-class healthcare services</p>
             <div className="cta-buttons">
-              <button className="btn btn-white">Schedule Appointment</button>
-              <button className="btn btn-outline-white">Contact Us</button>
+              <Link href="/appointment" className="btn btn-white" style={{ textDecoration: 'none' }}>Schedule Appointment</Link>
+              <Link href="/contact" className="btn btn-outline-white" style={{ textDecoration: 'none' }}>Contact Us</Link>
             </div>
           </div>
         </div>
