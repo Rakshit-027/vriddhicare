@@ -173,11 +173,16 @@ export default function AppointmentBooking() {
                       />
                     </div>
                   </div>
-                  <button type="button" onClick={nextStep} className="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100">
-                    Next Step <ChevronRight size={20} />
-                  </button>
-                </motion.div>
-              )}
+                    <button 
+                      type="button" 
+                      onClick={nextStep} 
+                      disabled={!formData.name || !formData.email || !formData.phone}
+                      className="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Next Step <ChevronRight size={20} />
+                    </button>
+                  </motion.div>
+                )}
 
               {step === 2 && (
                 <motion.div

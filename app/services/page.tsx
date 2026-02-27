@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const ServiceCard = ({ icon, title, availability, description, features }: any) => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -62,7 +62,7 @@ export default function ServicesPage() {
       features: ["Rapid response team", "Advanced trauma care", "Critical care monitoring", "Immediate diagnostics"],
       icon: (
         <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M25 5C13.95 5 5 13.95 5 25C5 36.05 13.95 45 25 45C36.05 45 45 36.05 45 25C45 13.95 36.05 5 25 5ZM32 27H27V32H23V27H18V23H23V18H27V23H32V27Z" fill="#10B981"/>
+          <path d="M25 5C13.95 5 5 13.95 5 25C5 36.05 13.95 45 25 45C36.05 45 45 36.05 45 25C45 13.95 36.05 5 25 5ZM32 27H27V32H23V27H18V23H23V18H27V23H32V27Z" fill="#10B981" />
         </svg>
       )
     },
@@ -73,7 +73,7 @@ export default function ServicesPage() {
       features: ["ECG and stress testing", "Echocardiography", "Cardiac catheterization", "Preventive cardiology"],
       icon: (
         <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M39.5 15C39.5 9.2 34.8 4.5 29 4.5C24.86 4.5 21.27 6.79 19.5 10.17C17.73 6.79 14.14 4.5 10 4.5C4.2 4.5 -0.5 9.2 -0.5 15C-0.5 21.69 5.14 27 18.89 39.73L19.5 40.3L20.11 39.73C33.86 27 39.5 21.69 39.5 15Z" fill="#10B981"/>
+          <path d="M39.5 15C39.5 9.2 34.8 4.5 29 4.5C24.86 4.5 21.27 6.79 19.5 10.17C17.73 6.79 14.14 4.5 10 4.5C4.2 4.5 -0.5 9.2 -0.5 15C-0.5 21.69 5.14 27 18.89 39.73L19.5 40.3L20.11 39.73C33.86 27 39.5 21.69 39.5 15Z" fill="#10B981" />
         </svg>
       )
     },
@@ -84,7 +84,7 @@ export default function ServicesPage() {
       features: ["Blood tests and analysis", "Microbiology testing", "Pathology services", "Quick result delivery"],
       icon: (
         <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M42 8H8C5.79 8 4 9.79 4 12V38C4 40.21 5.79 42 8 42H42C44.21 42 46 40.21 46 38V12C46 9.79 44.21 8 42 8ZM40 32H10V18H40V32Z" fill="#10B981"/>
+          <path d="M42 8H8C5.79 8 4 9.79 4 12V38C4 40.21 5.79 42 8 42H42C44.21 42 46 40.21 46 38V12C46 9.79 44.21 8 42 8ZM40 32H10V18H40V32Z" fill="#10B981" />
         </svg>
       )
     }
@@ -118,8 +118,8 @@ export default function ServicesPage() {
           <ul className={`fixed lg:static top-[70px] left-0 w-full lg:w-auto h-screen lg:h-auto bg-white flex flex-col lg:flex-row p-10 lg:p-0 gap-8 transition-all duration-300 ${menuOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full lg:translate-x-0'}`}>
             {['Home', 'Services', 'About Us', 'Contact'].map((item) => (
               <li key={item}>
-                <Link 
-                  href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`} 
+                <Link
+                  href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`}
                   className={`text-lg lg:text-base font-medium transition-colors hover:text-emerald-500 ${item === 'Services' ? 'text-emerald-500 border-b-2 border-emerald-500' : 'text-gray-600'}`}
                 >
                   {item}
@@ -147,14 +147,14 @@ export default function ServicesPage() {
             <span>/</span>
             <span className="text-emerald-500 font-semibold">Services</span>
           </div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
           >
             Our Medical Services
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -172,7 +172,7 @@ export default function ServicesPage() {
             <span className="inline-block px-5 py-2 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full mb-6">WHAT WE OFFER</span>
             <h2 className="text-4xl font-bold mb-6">Comprehensive Healthcare Services</h2>
             <p className="text-gray-500 leading-relaxed mb-10">
-              At HealthCare Plus, we provide a complete range of medical services designed to meet all your healthcare needs. 
+              At HealthCare Plus, we provide a complete range of medical services designed to meet all your healthcare needs.
               Our state-of-the-art facilities and experienced medical professionals ensure you receive the highest quality care.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -185,12 +185,12 @@ export default function ServicesPage() {
             </div>
           </div>
           <div className="relative">
-            <img 
-              src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&h=500&fit=crop" 
-              alt="Healthcare" 
+            <img
+              src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&h=500&fit=crop"
+              alt="Healthcare"
               className="rounded-3xl shadow-2xl"
             />
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
               className="absolute -bottom-8 -right-4 md:bottom-8 md:right-8 bg-gradient-to-br from-emerald-500 to-emerald-700 text-white p-8 rounded-2xl shadow-xl text-center"
@@ -229,7 +229,7 @@ export default function ServicesPage() {
               { icon: "💚", title: "Compassion", desc: "Personalized treatment plans for your comfort." },
               { icon: "⚡", title: "Efficiency", desc: "Minimal waiting times and quick attention." },
             ].map((item, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 whileHover={{ y: -10 }}
                 className="p-10 bg-gray-50 rounded-2xl transition-all hover:bg-white hover:shadow-xl group"
@@ -306,11 +306,11 @@ export default function ServicesPage() {
       </footer>
 
       {/* ── FLOAT BUTTONS ── */}
-      <a href="https://wa.me/1234567890" target="_blank" className="fixed bottom-8 right-8 w-15 h-15 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl z-[999] transition-transform hover:scale-110 active:scale-95 animate-bounce">
-         <span className="text-white text-3xl">💬</span>
+      <a href="https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0" target="_blank" className="fixed bottom-8 right-8 w-15 h-15 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl z-[999] transition-transform hover:scale-110 active:scale-95 animate-bounce">
+        <span className="text-white text-3xl">💬</span>
       </a>
-      
-      <button 
+
+      <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className={`fixed bottom-28 right-9 w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-xl transition-all duration-300 z-[998] hover:-translate-y-2 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
