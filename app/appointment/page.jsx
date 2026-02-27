@@ -92,6 +92,38 @@ export default function AppointmentBooking() {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] font-sans text-slate-900 pb-20">
+      {/* ── FULLSCREEN LOADER ── */}
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/60 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-white p-8 rounded-3xl shadow-2xl flex flex-col items-center border border-emerald-100"
+            >
+              <div className="flex gap-2 mb-4">
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    className="w-4 h-4 bg-emerald-500 rounded-full shadow-lg shadow-emerald-200"
+                    animate={{ y: [0, -15, 0] }}
+                    transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.2 }}
+                  />
+                ))}
+              </div>
+              <p className="text-slate-700 font-bold text-lg">Processing Booking...</p>
+              <p className="text-slate-400 text-sm mt-1">Please wait a moment</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <nav className="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <img src="/log.png" alt="Logo" className="h-14" />

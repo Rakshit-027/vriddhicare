@@ -97,6 +97,38 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
 
+      {/* ── FULLSCREEN LOADER ── */}
+      <AnimatePresence>
+        {isSubmitting && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/60 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-white p-8 rounded-3xl shadow-2xl flex flex-col items-center border border-emerald-100"
+            >
+              <div className="flex gap-2 mb-4">
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    className="w-4 h-4 bg-emerald-500 rounded-full shadow-lg shadow-emerald-200"
+                    animate={{ y: [0, -15, 0] }}
+                    transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.2 }}
+                  />
+                ))}
+              </div>
+              <p className="text-gray-700 font-bold text-lg">Sending Message...</p>
+              <p className="text-gray-400 text-sm mt-1">Please wait a moment</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ── TOP BAR & NAVBAR (Consistent with Home/About) ── */}
       <div className="hidden lg:block bg-emerald-700 text-white py-2.5 text-sm">
         <div className="container mx-auto px-5 flex justify-between items-center">
