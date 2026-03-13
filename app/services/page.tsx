@@ -9,33 +9,58 @@ import { motion, AnimatePresence } from 'framer-motion';
 const ServiceCard = ({ icon, title, availability, description, features }: any) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="bg-white rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100"
+      transition={{ duration: 0.5 }}
+      className="group relative bg-white rounded-[32px] p-3 border border-gray-100 shadow-xl shadow-gray-200/30 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 h-full"
     >
-      <div className="bg-gradient-to-br from-emerald-50 to-white p-8 flex flex-col md:flex-row items-center gap-6 border-b-2 border-gray-100">
-        <div className="w-[90px] h-[90px] bg-white rounded-[15px] flex items-center justify-center shadow-md shrink-0 transition-transform duration-300 hover:scale-110 hover:rotate-3">
-          {icon}
+      <div className="bg-gray-50 rounded-[28px] p-8 md:p-12 transition-colors duration-500 group-hover:bg-white h-full flex flex-col">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-10">
+          <div className="flex flex-col gap-4 order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-100 text-emerald-700 text-[11px] font-black uppercase tracking-widest rounded-full self-start shadow-sm shadow-emerald-200/50">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              {availability}
+            </div>
+            <h3 className="text-3xl md:text-4xl font-black text-slate-900 leading-[1.1]">
+              {title}
+            </h3>
+          </div>
+          <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-3xl flex items-center justify-center shadow-xl shadow-gray-200/50 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 border border-gray-50 shrink-0 order-1 lg:order-2">
+            <div className="text-emerald-500 scale-150">
+              {icon}
+            </div>
+          </div>
         </div>
-        <div className="text-center md:text-left">
-          <h3 className="text-[28px] font-bold text-gray-800 mb-2">{title}</h3>
-          <p className="text-emerald-500 font-semibold text-sm uppercase tracking-wide">{availability}</p>
-        </div>
-      </div>
-      <div className="p-8">
-        <p className="text-gray-500 leading-relaxed mb-6">{description}</p>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 mb-8">
+
+        <p className="text-slate-500 text-lg md:text-xl leading-relaxed mb-10 flex-grow font-medium opacity-80">
+          {description}
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 mb-12">
           {features.map((feature: string, idx: number) => (
-            <li key={idx} className="flex items-center gap-3 py-3 border-b border-gray-50 last:border-0 text-gray-700">
-              <span className="text-emerald-500 font-bold">✓</span>
-              {feature}
-            </li>
+            <div key={idx} className="flex items-center gap-4 text-slate-700 group/feature">
+              <div className="w-6 h-6 rounded-lg bg-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-200 group-hover/feature:scale-110 transition-transform">
+                <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span className="font-bold text-sm md:text-base">{feature}</span>
+            </div>
           ))}
-        </ul>
-        <Link href="/appointment" className="w-full md:w-auto px-8 py-4 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200">
-          Book {title}
+        </div>
+
+        <Link 
+          href="/appointment" 
+          className="group/btn relative overflow-hidden bg-slate-900 text-white py-5 rounded-2xl font-black text-lg flex items-center justify-center transition-all duration-300 hover:bg-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/30 active:scale-[0.98] w-full"
+        >
+          <span className="relative z-10 flex items-center gap-3">
+            Book Appointment
+            <svg className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
         </Link>
       </div>
     </motion.div>
@@ -62,8 +87,8 @@ export default function ServicesPage() {
       description: "Our qualified nurses provide medical care such as:",
       features: ["Injection administration", "IV fluids and medication", "Wound dressing", "Vital monitoring", "Post-surgery care", "Medical supervision"],
       icon: (
-        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M25 5C13.95 5 5 13.95 5 25C5 36.05 13.95 45 25 45C36.05 45 45 36.05 45 25C45 13.95 36.05 5 25 5ZM32 27H27V32H23V27H18V23H23V18H27V23H32V27Z" fill="#10B981" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/>
         </svg>
       )
     },
@@ -74,8 +99,8 @@ export default function ServicesPage() {
       description: "Recovering at home becomes easier with our trained caregivers who assist with:",
       features: ["Medication management", "Physiotherapy assistance", "Mobility support", "Daily health monitoring", "Doctor coordination"],
       icon: (
-        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M39.5 15C39.5 9.2 34.8 4.5 29 4.5C24.86 4.5 21.27 6.79 19.5 10.17C17.73 6.79 14.14 4.5 10 4.5C4.2 4.5 -0.5 9.2 -0.5 15C-0.5 21.69 5.14 27 18.89 39.73L19.5 40.3L20.11 39.73C33.86 27 39.5 21.69 39.5 15Z" fill="#10B981" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
       )
     },
@@ -86,8 +111,8 @@ export default function ServicesPage() {
       description: "For patients requiring critical care support at home, our experienced nurses provide:",
       features: ["ICU-level monitoring", "Medical equipment handling", "Ventilator care assistance", "Continuous patient supervision"],
       icon: (
-        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M42 8H8C5.79 8 4 9.79 4 12V38C4 40.21 5.79 42 8 42H42C44.21 42 46 40.21 46 38V12C46 9.79 44.21 8 42 8ZM40 32H10V18H40V32Z" fill="#10B981" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
         </svg>
       )
     },
@@ -98,8 +123,8 @@ export default function ServicesPage() {
       description: "Our caregivers assist elderly individuals with daily routines such as:",
       features: ["Bathing and grooming", "Dressing assistance", "Mobility support", "Meal preparation", "Medication reminders"],
       icon: (
-        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M38 4H12C9.79 4 8 5.79 8 8V42C8 44.21 9.79 46 12 46H38C40.21 46 42 44.21 42 42V8C42 5.79 40.21 4 38 4ZM28 38H22V32H28V38ZM28 28H22V10H28V28Z" fill="#10B981" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
         </svg>
       )
     },
@@ -110,8 +135,8 @@ export default function ServicesPage() {
       description: "Loneliness can affect elderly health. Our caregivers provide:",
       features: ["Emotional support", "Friendly companionship", "Conversation and engagement", "Outdoor walks and activities"],
       icon: (
-        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M39 5H11C8.24 5 6 7.24 6 10V40C6 42.76 8.24 45 11 45H39C41.76 45 44 42.76 44 40V10C44 7.24 41.76 5 39 5ZM20 35L12 27L15.06 23.94L20 28.88L34.94 13.94L38 17L20 35Z" fill="#10B981" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
         </svg>
       )
     },
@@ -122,8 +147,8 @@ export default function ServicesPage() {
       description: "For seniors who require constant support, we provide:",
       features: ["Full-time caregivers", "Day & night assistance", "Health monitoring", "Emergency response support"],
       icon: (
-        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M25 5C13.95 5 5 13.95 5 25C5 36.05 13.95 45 25 45C36.05 45 45 36.05 45 25C45 13.95 36.05 5 25 5ZM32 27H27V32H23V27H18V23H23V18H27V23H32V27Z" fill="#10B981" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
         </svg>
       )
     },
@@ -134,135 +159,159 @@ export default function ServicesPage() {
       description: "Our trained attendants help patients and elderly individuals with their daily routines including:",
       features: ["Feeding assistance", "Personal hygiene support", "Mobility assistance", "Bedridden patient care", "Home support activities"],
       icon: (
-        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M42 8H8C5.79 8 4 9.79 4 12V38C4 40.21 5.79 42 8 42H42C44.21 42 46 40.21 46 38V12C46 9.79 44.21 8 42 8ZM40 32H10V18H40V32Z" fill="#10B981" />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
         </svg>
       )
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900">
+    <div className="min-h-screen bg-white font-sans text-gray-900 selection:bg-emerald-500 selection:text-white">
       {/* ── TOP BAR ── */}
-      <div className="hidden lg:block bg-emerald-700 text-white py-2 text-sm">
+      <div className="hidden lg:block bg-slate-900 text-white py-3 text-sm font-medium">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex gap-6">
-            <span>📞 +91 9860802592, +91 9158393859</span>
-            <span>✉️ vriddhicare@gmail.com</span>
-            <span>🕐 24/7 Care & Emergency Support</span>
+          <div className="flex gap-8 items-center">
+            <span className="flex items-center gap-2">
+              <span className="text-emerald-500">📞</span> +91 9860802592, 9158393859
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="text-emerald-500">✉️</span> vriddhicare@gmail.com
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="text-emerald-500 text-lg">🕐</span> 24/7 Care & Support
+            </span>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             {['f', 'in', 'tw', 'ig'].map(s => (
-              <a key={s} href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-emerald-600 transition-all">{s}</a>
+              <a key={s} href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 transition-all border border-white/10">{s}</a>
             ))}
           </div>
         </div>
       </div>
 
       {/* ── NAVIGATION ── */}
-      <nav className={`sticky top-0 z-[1000] bg-white transition-all duration-300 ${scrolled ? 'shadow-lg py-3' : 'py-5'}`}>
+      <nav className={`sticky top-0 z-[1000] bg-white/80 backdrop-blur-xl transition-all duration-500 ${scrolled ? 'shadow-xl py-3 border-b border-gray-100' : 'py-6'}`}>
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <Link href="/">
-            <img src="/log.png" alt="Logo" className="h-14 w-auto" />
+          <Link href="/" className="transition-transform active:scale-95">
+            <img src="/log.png" alt="Logo" className="h-12 md:h-16 w-auto" />
           </Link>
 
-          <ul className={`fixed lg:static top-[70px] left-0 w-full lg:w-auto h-screen lg:h-auto bg-white flex flex-col lg:flex-row p-10 lg:p-0 gap-8 transition-all duration-300 ${menuOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full lg:translate-x-0'}`}>
+          <ul className={`fixed lg:static top-0 left-0 w-full lg:w-auto h-screen lg:h-auto bg-white/95 lg:bg-transparent backdrop-blur-3xl lg:backdrop-blur-0 flex flex-col lg:flex-row items-center justify-center lg:p-0 gap-10 lg:gap-12 transition-all duration-500 z-[1001] ${menuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
+            <button className="lg:hidden absolute top-8 right-8 text-3xl text-emerald-500" onClick={() => setMenuOpen(false)}>×</button>
             {['Home', 'Services', 'About Us', 'Contact'].map((item) => (
               <li key={item}>
                 <Link
                   href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`}
-                  className={`text-lg lg:text-base font-medium transition-colors hover:text-emerald-500 ${item === 'Services' ? 'text-emerald-500 border-b-2 border-emerald-500' : 'text-gray-600'}`}
+                  onClick={() => setMenuOpen(false)}
+                  className={`relative text-2xl lg:text-base font-bold transition-all hover:text-emerald-500 group ${item === 'Services' ? 'text-emerald-500' : 'text-slate-600'}`}
                 >
                   {item}
+                  <span className={`absolute -bottom-2 left-0 h-1 bg-emerald-500 transition-all duration-300 ${item === 'Services' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </Link>
               </li>
             ))}
           </ul>
 
-          <div className="flex items-center gap-4">
-            <Link href="/appointment" className="hidden sm:block px-6 py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-all">Book Appointment</Link>
-            <button className="lg:hidden flex flex-col gap-1.5" onClick={() => setMenuOpen(!menuOpen)}>
-              <span className={`w-6 h-0.5 bg-emerald-500 transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`w-6 h-0.5 bg-emerald-500 ${menuOpen ? 'opacity-0' : ''}`} />
-              <span className={`w-6 h-0.5 bg-emerald-500 transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <div className="flex items-center gap-6">
+            <Link href="/appointment" className="hidden sm:inline-flex px-8 py-3.5 bg-slate-900 text-white font-black rounded-2xl hover:bg-emerald-500 transition-all shadow-xl shadow-gray-200 hover:shadow-emerald-200 active:scale-95">Book Appointment</Link>
+            <button className="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 bg-gray-50 rounded-xl" onClick={() => setMenuOpen(true)}>
+              <span className="w-6 h-1 bg-emerald-500 rounded-full" />
+              <span className="w-4 h-1 bg-emerald-500 rounded-full" />
+              <span className="w-6 h-1 bg-emerald-500 rounded-full" />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* ── PAGE HEADER ── */}
-      <section className="bg-gradient-to-br from-emerald-50 to-white py-20 text-center">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mb-6">
-            <Link href="/" className="hover:text-emerald-500">Home</Link>
-            <span>/</span>
-            <span className="text-emerald-500 font-semibold">Services</span>
-          </div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
+      {/* ── HERO ── */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-emerald-50/50 via-white to-white py-24 md:py-32">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-30 pointer-events-none">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-200 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-100 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        </div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-block px-6 py-2 bg-white rounded-full shadow-lg shadow-emerald-100 text-emerald-600 font-black text-xs md:text-sm uppercase tracking-[0.2em] mb-8 border border-emerald-50"
           >
-            Our Medical Services
+            Empowering Health at Home
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-8xl font-black text-slate-900 mb-8 leading-[0.95] tracking-tight"
+          >
+            Professional <br /> <span className="text-emerald-500">Care Services</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed"
           >
-            Comprehensive healthcare solutions tailored to your needs
+            High-quality medical assistance and elder care tailored for comfort, dignity, and recovery.
           </motion.p>
         </div>
       </section>
 
       {/* ── OVERVIEW ── */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <span className="inline-block px-5 py-2 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full mb-6">WHAT WE OFFER</span>
-            <h2 className="text-4xl font-bold mb-6">Professional Home Patient Care & Elder Care</h2>
-            <p className="text-gray-500 leading-relaxed mb-6">
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-20 items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="order-2 md:order-1"
+          >
+            <span className="text-emerald-500 font-black uppercase tracking-widest text-sm mb-6 block">What We Offer</span>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">Expert Healthcare, <br />Personal Approach.</h2>
+            <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed mb-8">
               We provide professional home healthcare services for patients who need medical assistance and care after hospitalization or during long-term illness.
             </p>
-            <p className="text-gray-500 leading-relaxed mb-10">
-              We also provide compassionate elder care services designed to support senior citizens in maintaining a comfortable and dignified lifestyle. Our trained attendants help patients and elderly individuals with their daily routines.
+            <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed mb-12">
+              Our compassionate elder care services are designed to support senior citizens in maintaining a comfortable and dignified lifestyle.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {["Home Patient Care", "Elder Care Services", "Attendant Care", "Available 24/7"].map(item => (
-                <div key={item} className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold">✓</div>
-                  <span className="font-medium text-gray-800">{item}</span>
+                <div key={item} className="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100 hover:border-emerald-200 transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-black shadow-lg shadow-emerald-200">✓</div>
+                  <span className="font-extrabold text-slate-800">{item}</span>
                 </div>
               ))}
             </div>
-          </div>
-          <div className="relative">
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative order-1 md:order-2"
+          >
+            <div className="absolute inset-0 bg-emerald-500 rounded-[40px] rotate-3 -z-10 opacity-10 group-hover:rotate-6 transition-transform" />
             <img
-              src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&h=500&fit=crop"
+              src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=800&fit=crop"
               alt="Home Care"
-              className="rounded-3xl shadow-2xl"
+              className="rounded-[40px] shadow-2xl relative z-10 w-full"
             />
-            <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -bottom-8 -right-4 md:bottom-8 md:right-8 bg-gradient-to-br from-emerald-500 to-emerald-700 text-white p-8 rounded-2xl shadow-xl text-center"
-            >
-              <h3 className="text-3xl font-bold mb-1">500+</h3>
-              <p className="text-sm opacity-90">Happy Families</p>
-            </motion.div>
-          </div>
+            <div className="absolute -bottom-10 -left-10 md:bottom-10 md:left-10 bg-slate-900 text-white p-10 rounded-[32px] shadow-2xl z-20 hidden sm:block">
+              <h3 className="text-5xl font-black mb-1 text-emerald-500">500+</h3>
+              <p className="text-sm font-bold opacity-70 uppercase tracking-widest">Happy Families</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── MAIN SERVICES LIST ── */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-16">
-            <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm">Our Specialties</span>
-            <h2 className="text-4xl font-bold mt-2">Medical Services We Provide</h2>
+      <section className="py-24 md:py-32 bg-slate-50/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-20">
+            <span className="text-emerald-500 font-black uppercase tracking-widest text-sm mb-4 block">Our Specialties</span>
+            <h2 className="text-4xl md:text-7xl font-black text-slate-900">Medical Excellence</h2>
           </div>
-          <div className="flex flex-col gap-16">
+          
+          <div className="space-y-32">
             {Object.entries(
               services.reduce((acc, service) => {
                 const cat = service.category || "Other";
@@ -270,10 +319,16 @@ export default function ServicesPage() {
                 acc[cat].push(service);
                 return acc;
               }, {} as any)
-            ).map(([category, items]: any) => (
-              <div key={category}>
-                <h3 className="text-2xl font-bold mb-6 mt-4 text-gray-800 border-l-4 border-emerald-500 pl-4 text-left">{category}</h3>
-                <div className="flex flex-col gap-10">
+            ).map(([category, items]: any, catIndex: number) => (
+              <div key={category} className="space-y-12">
+                <div className="flex items-center gap-6">
+                  <h3 className="text-3xl md:text-5xl font-black text-slate-900 flex items-center gap-4">
+                    <span className="w-12 h-1 bg-emerald-500 rounded-full" />
+                    {category}
+                  </h3>
+                  <div className="flex-grow h-px bg-gray-200" />
+                </div>
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 md:gap-16">
                   {items.map((service: any, index: number) => (
                     <ServiceCard key={index} {...service} />
                   ))}
@@ -285,27 +340,31 @@ export default function ServicesPage() {
       </section>
 
       {/* ── WHY CHOOSE US ── */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 text-center max-w-7xl">
-          <span className="inline-block px-5 py-2 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full mb-6">WHY CHOOSE US</span>
-          <h2 className="text-4xl font-bold mb-16">Why Families Trust Vriddhicare</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-24 md:py-32 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-20">
+            <span className="text-emerald-500 font-black uppercase tracking-widest text-sm mb-4 block">Why Us</span>
+            <h2 className="text-4xl md:text-7xl font-black text-slate-900">The Vriddhicare Difference</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
             {[
-              { icon: "👨‍⚕️", title: "Experienced Professionals", desc: "Our team includes 100+ trained and government-certified nurses and caregivers with extensive experience." },
-              { icon: "⭐", title: "7+ Years Trusted Service", desc: "We have been providing reliable healthcare services for more than 7 years." },
-              { icon: "💚", title: "Served 500+ Patients", desc: "Successfully cared for 500+ patients and senior citizens with compassion and professionalism." },
-              { icon: "📋", title: "Personalized Care Plans", desc: "Every patient has different needs. We create customized care plans based on medical requirements." },
-              { icon: "🏡", title: "Comfort of Home", desc: "We bring professional healthcare services directly to your home, ensuring comfort and convenience." },
-              { icon: "💎", title: "Affordable & Reliable", desc: "Our services are designed to be cost-effective while maintaining high quality care." },
+              { icon: "👨‍⚕️", title: "Experienced Teams", desc: "100+ trained and government-certified nurses and caregivers with years of clinical experience." },
+              { icon: "⭐", title: "7+ Years Legacy", desc: "A track record of excellence in home healthcare since our founding." },
+              { icon: "💚", title: "500+ Patients", desc: "Successfully managed high-acuity cases and complex elder care requirements with success." },
+              { icon: "📋", title: "Bespoke Care", desc: "Each medical plan is unique, crafted specifically for the patient's physiological and emotional needs." },
+              { icon: "🏡", title: "Clinical Support at Home", desc: "We bridge the gap between hospital discharge and full recovery in the comfort of home." },
+              { icon: "💎", title: "Premium Standards", desc: "Hospital-grade care protocols delivered through a lens of compassion and empathy." },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
-                whileHover={{ y: -10 }}
-                className="p-10 bg-gray-50 rounded-2xl transition-all hover:bg-white hover:shadow-xl group border border-gray-100"
+                whileHover={{ y: -12 }}
+                className="p-12 bg-gray-50 rounded-[40px] border border-gray-100 transition-all hover:bg-white hover:shadow-2xl hover:shadow-emerald-500/10 group"
               >
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-4xl mb-8 shadow-xl shadow-gray-200/50 group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-black text-slate-900 mb-4">{item.title}</h3>
+                <p className="text-slate-500 text-lg font-medium leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -313,25 +372,29 @@ export default function ServicesPage() {
       </section>
 
       {/* ── CARE PROCESS ── */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4 text-center max-w-5xl">
-          <span className="inline-block px-5 py-2 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full mb-6">OUR PROCESS</span>
-          <h2 className="text-4xl font-bold mb-16">Our Care Process</h2>
+      <section className="py-24 md:py-32 bg-slate-900 text-white rounded-[60px] md:rounded-[100px] my-10 mx-4 overflow-hidden relative">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,theme(colors.emerald.500),transparent_70%)]" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-24">
+            <span className="text-emerald-500 font-black uppercase tracking-widest text-sm mb-4 block">Our Process</span>
+            <h2 className="text-4xl md:text-7xl font-black">How We Work</h2>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-            <div className="hidden md:block absolute top-12 left-0 w-full h-1 bg-emerald-200 z-0"></div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             {[
-              { num: "1", title: "Consultation", text: "We understand the patient's condition and care requirements." },
-              { num: "2", title: "Care Plan Creation", text: "A personalized care plan is designed." },
-              { num: "3", title: "Caregiver Assignment", text: "A trained nurse or caregiver is assigned." },
-              { num: "4", title: "Continuous Monitoring", text: "Regular supervision ensures the highest quality care." }
+              { num: "01", title: "Consultation", text: "In-depth health assessment by our experts." },
+              { num: "02", title: "Strategy", text: "Designing a personalized 24/7 care roadmap." },
+              { num: "03", title: "Deployment", text: "Assigning the most compatible caregiver." },
+              { num: "04", title: "Optimization", text: "Real-time monitoring and medical feedback." }
             ].map((step, idx) => (
-              <div key={idx} className="relative z-10 flex flex-col items-center">
-                <div className="w-24 h-24 rounded-full bg-emerald-500 text-white font-bold text-3xl flex items-center justify-center mb-6 shadow-xl shadow-emerald-200 border-4 border-white shrink-0">
+              <div key={idx} className="flex flex-col items-center md:items-start group">
+                <div className="text-7xl font-black text-emerald-500/20 mb-6 group-hover:text-emerald-500/100 transition-colors duration-500">
                   {step.num}
                 </div>
-                <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                <p className="text-gray-500 text-sm">{step.text}</p>
+                <h3 className="text-2xl font-black mb-4">{step.title}</h3>
+                <p className="text-slate-400 text-lg font-medium text-center md:text-left">{step.text}</p>
               </div>
             ))}
           </div>
@@ -339,78 +402,86 @@ export default function ServicesPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-emerald-600 py-20">
-        <div className="container mx-auto px-4 text-center text-white">
-          <h2 className="text-4xl font-bold mb-6">Need Medical Assistance?</h2>
-          <p className="text-xl opacity-90 mb-10 max-w-xl mx-auto">Our healthcare professionals are ready to help you. Book an appointment today.</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/appointment" className="px-10 py-4 bg-white text-emerald-600 font-bold rounded-lg hover:shadow-2xl transition-all">Schedule Appointment</Link>
-            <button className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-emerald-600 transition-all">Emergency: +91 9860802592, +91 9158393859</button>
+      <section className="py-32 md:py-48 text-center bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-5xl md:text-9xl font-black text-slate-900 mb-12 leading-none">Ready for <br /> <span className="text-emerald-500">Better Care?</span></h2>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <Link href="/appointment" className="px-12 py-6 bg-slate-900 text-white font-black rounded-3xl hover:bg-emerald-500 transition-all shadow-2xl hover:shadow-emerald-200 text-xl active:scale-95">Book Consultation</Link>
+            <a href="tel:+919860802592" className="px-12 py-6 border-4 border-slate-900 text-slate-900 font-black rounded-3xl hover:bg-slate-900 hover:text-white transition-all text-xl active:scale-95">Support Hotline</a>
           </div>
         </div>
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="bg-slate-900 text-white pt-20">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-20 border-b border-slate-800">
-          <div>
-            <div className="flex items-center gap-2 text-2xl font-bold text-emerald-500 mb-6">
-              <span className="w-10 h-10 bg-emerald-500 text-white flex items-center justify-center rounded-lg">+</span>
-              Vriddhicare
+      <footer className="bg-slate-900 text-white pt-32 pb-12 rounded-t-[100px]">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 pb-20 border-b border-white/5">
+            <div className="space-y-8">
+              <img src="/log.png" alt="Logo" className="h-20 brightness-0 invert" />
+              <p className="text-slate-400 text-lg font-medium leading-relaxed">Redefining home healthcare with expertise, empathy, and innovation since 2017.</p>
+              <div className="flex gap-4">
+                {['FB', 'IN', 'TW', 'IG'].map(s => (
+                  <div key={s} className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center font-black hover:bg-emerald-500 transition-all cursor-pointer border border-white/10">{s}</div>
+                ))}
+              </div>
             </div>
-            <p className="text-slate-400 mb-8">Providing quality healthcare services with compassion and excellence. Your health is our priority.</p>
-            <div className="flex gap-4">
-              {['f', 'in', 't', 'i'].map(s => (
-                <div key={s} className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 cursor-pointer transition-all">{s}</div>
-              ))}
+            <div>
+              <h4 className="text-2xl font-black mb-10">Navigation</h4>
+              <ul className="space-y-5 text-slate-400 font-bold text-lg">
+                {['Home', 'Services', 'About Us', 'Contact'].map(l => (
+                  <li key={l}><Link href="#" className="hover:text-emerald-500 transition-all">{l}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-2xl font-black mb-10">Offerings</h4>
+              <ul className="space-y-5 text-slate-400 font-bold text-lg">
+                {['Nursing Care', 'Elder Assist', 'ICU Home', 'Physiotherapy'].map(s => (
+                  <li key={s}><Link href="#" className="hover:text-emerald-500 transition-all">{s}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-2xl font-black mb-10">Headquarters</h4>
+              <ul className="space-y-6 text-slate-400 font-medium">
+                <li className="flex gap-4 italic font-bold text-blue-100">Vriddhicare Healthcare Services</li>
+                <li className="flex gap-4">📍 101, Vanashree Apartment, Nagpur. 440022</li>
+                <li className="flex gap-4">📞 +91 9860802592, 9158393859</li>
+                <li className="flex gap-4">🕐 24/7 Global Response</li>
+              </ul>
             </div>
           </div>
-          <div>
-            <h4 className="text-xl font-bold mb-8">Quick Links</h4>
-            <ul className="space-y-4 text-slate-400">
-              {['Home', 'Services', 'About Us', 'Contact'].map(l => (
-                <li key={l}><Link href="#" className="hover:text-emerald-500 transition-all">{l}</Link></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xl font-bold mb-8">Medical Services</h4>
-            <ul className="space-y-4 text-slate-400">
-              {['Home Patient Care', 'Elder Care Services', 'Nursing Care', 'Attendant Care', 'Emergency Support'].map(s => (
-                <li key={s}><Link href="#" className="hover:text-emerald-500 transition-all">{s}</Link></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xl font-bold mb-8">Contact Info</h4>
-            <ul className="space-y-4 text-slate-400 text-sm">
-              <li>📍 101, Vanashree Apartment, IT Park Road, Gayatri Nagar, Nagpur. 440022</li>
-              <li>📞 +91 9860802592, +91 9158393859</li>
-              <li>✉️ vriddhicare@gmail.com</li>
-              <li>🕐 24/7 Care & Emergency Support</li>
-            </ul>
-          </div>
-        </div>
-        <div className="container mx-auto px-4 py-8 flex flex-col md:row justify-between items-center text-slate-500 text-sm gap-4">
-          <p>© 2026 Vriddhicare. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="#" className="hover:text-emerald-500">Privacy Policy</Link>
-            <Link href="#" className="hover:text-emerald-500">Terms of Service</Link>
+          <div className="pt-12 flex flex-col md:flex-row justify-between items-center text-slate-500 font-bold gap-6">
+            <p>© 2026 Vriddhicare. Crafted for Excellence.</p>
+            <div className="flex gap-10">
+              <Link href="#" className="hover:text-white">Privacy</Link>
+              <Link href="#" className="hover:text-white">Terms</Link>
+            </div>
           </div>
         </div>
       </footer>
 
       {/* ── FLOAT BUTTONS ── */}
-      <a href="https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0" target="_blank" className="fixed bottom-8 right-8 w-15 h-15 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl z-[999] transition-transform hover:scale-110 active:scale-95 animate-bounce">
-        <span className="text-white text-3xl">💬</span>
+      <a href="https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0" target="_blank" className="fixed bottom-8 right-8 w-20 h-20 bg-[#25D366] rounded-3xl flex items-center justify-center shadow-2xl z-[999] transition-transform hover:scale-110 active:scale-95 animate-bounce-slow">
+        <span className="text-white text-4xl">💬</span>
       </a>
 
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-28 right-9 w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-xl transition-all duration-300 z-[998] hover:-translate-y-2 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-32 right-10 w-14 h-14 bg-white text-slate-900 rounded-2xl flex items-center justify-center shadow-2xl transition-all duration-500 z-[998] hover:-translate-y-2 border border-gray-100 font-black ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
       >
         ↑
       </button>
+
+      <style jsx global>{`
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0) scale(1.05); }
+          50% { transform: translateY(-10px) scale(1); }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 4s infinite ease-in-out;
+        }
+      `}</style>
     </div>
   );
 }
