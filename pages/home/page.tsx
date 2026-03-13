@@ -511,7 +511,7 @@ export default function HealthcarePlus() {
                   We understand that every patient and elderly individual deserves personalized care, emotional support, and medical attention. Our trained healthcare professionals ensure safety, comfort, and well-being for your loved ones at home.
                 </p>
               </div>
-              
+
               <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#1f2937', marginBottom: '15px' }}>Our Commitment</h3>
               <div className="about-features" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px', marginBottom: '30px' }}>
                 {[
@@ -645,19 +645,19 @@ export default function HealthcarePlus() {
                 id: 'test-1',
                 text: '"The caregivers were extremely professional and compassionate while taking care of my father after his surgery. Their dedication made a huge difference in his recovery."',
                 name: 'Rahul Sharma',
-                img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
+                img: '',
               },
               {
                 id: 'test-2',
                 text: '"We were worried about leaving our elderly mother alone at home, but their caregiver treated her like family. We are very thankful for their support."',
                 name: 'Meena Patil',
-                img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop',
+                img: '',
               },
               {
                 id: 'test-3',
                 text: '"The nursing staff is very well trained and responsible. They took excellent care of my grandfather. Highly recommended."',
                 name: 'Amit Deshmukh',
-                img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
+                img: '',
               },
             ].map((t) => (
               <div
