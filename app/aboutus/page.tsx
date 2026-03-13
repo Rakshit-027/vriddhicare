@@ -381,19 +381,19 @@ export default function AboutPage() {
                 name: "Rahul Sharma",
                 role: "Patient - Nagpur",
                 text: "The caregivers were extremely professional and compassionate while taking care of my father after his surgery. Their dedication made a huge difference in his recovery.",
-                img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+                img: "",
               },
               {
                 name: "Meena Patil",
                 role: "Patient - Nagpur",
                 text: "We were worried about leaving our elderly mother alone at home, but their caregiver treated her like family. We are very thankful for their support.",
-                img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+                img: "",
               },
               {
                 name: "Amit Deshmukh",
                 role: "Patient - Nagpur",
                 text: "The nursing staff is very well trained and responsible. They took excellent care of my grandfather. Highly recommended.",
-                img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+                img: "",
               },
             ].map((testimonial, idx) => (
               <motion.div
