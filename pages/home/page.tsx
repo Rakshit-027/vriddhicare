@@ -133,11 +133,11 @@ export default function HealthcarePlus() {
         /* ===== FEATURES MINI CARDS ===== */
         .features-section { padding: 0; margin-top: -50px; position: relative; z-index: 10; }
         .features-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .feature-mini-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center; transition: all 0.3s ease; cursor: pointer; }
+        .feature-mini-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center; transition: all 0.3s ease; cursor: pointer; color: #1f2937; }
         .feature-mini-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(16,185,129,0.2); }
         .mini-icon { font-size: 40px; margin-bottom: 15px; }
         .feature-mini-card h4 { font-size: 18px; color: #1f2937; margin-bottom: 8px; }
-        .feature-mini-card p { font-size: 14px; color: #6b7280; margin: 0; }
+        .feature-mini-card p { font-size: 14px; color: #4b5563; margin: 0; }
 
         /* ===== ABOUT ===== */
         .about-section { padding: 100px 0; background: white; }
@@ -153,32 +153,32 @@ export default function HealthcarePlus() {
         .about-stat p { font-size: 13px; color: #6b7280; margin: 0; }
         .section-badge { display: inline-block; background: #d1fae5; color: #065f46; padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 600; margin-bottom: 15px; }
         .section-title { font-size: 40px; color: #1f2937; margin-bottom: 15px; }
-        .section-description { font-size: 18px; color: #6b7280; max-width: 700px; margin: 0 auto 50px; }
-        .about-description { font-size: 16px; color: #6b7280; margin-bottom: 30px; line-height: 1.8; }
-        .about-feature-item { display: flex; gap: 15px; margin-bottom: 20px; }
+        .section-description { font-size: 18px; color: #4b5563; max-width: 700px; margin: 0 auto 50px; }
+        .about-description { font-size: 16px; color: #4b5563; margin-bottom: 30px; line-height: 1.8; }
+        .about-feature-item { display: flex; gap: 15px; margin-bottom: 20px; color: #1f2937; }
         .check-icon { width: 30px; height: 30px; background: #10B981; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
 
         /* ===== SERVICES ===== */
         .services-section { padding: 80px 0; background: #F9FAFB; }
         .section-header { text-align: center; margin-bottom: 60px; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .service-card { background: white; padding: 40px; border-radius: 15px; transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent; }
+        .service-card { background: white; padding: 40px; border-radius: 15px; transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent; color: #1f2937; }
         .service-card:hover { border-color: #10B981; transform: translateY(-10px); box-shadow: 0 20px 50px rgba(16,185,129,0.15); }
         .service-icon { width: 80px; height: 80px; background: #f0fdf4; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; transition: all 0.3s ease; }
         .service-card:hover .service-icon { background: #10B981; transform: scale(1.1); }
         .service-card:hover .service-icon svg path { fill: white; }
         .service-title { font-size: 22px; color: #1f2937; margin-bottom: 15px; }
-        .service-text { color: #6b7280; font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+        .service-text { color: #4b5563; font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
         .service-link { color: #10B981; text-decoration: none; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.3s ease; }
         .service-link:hover { gap: 10px; }
 
         /* ===== TESTIMONIALS ===== */
         .testimonials-section { padding: 80px 0; background: #F9FAFB; }
         .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .testimonial-card { background: white; padding: 35px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; }
+        .testimonial-card { background: white; padding: 35px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; color: #1f2937; }
         .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(16,185,129,0.1); }
         .testimonial-rating { color: #FCD34D; font-size: 20px; margin-bottom: 20px; }
-        .testimonial-text { color: #6b7280; font-size: 15px; line-height: 1.8; margin-bottom: 25px; font-style: italic; }
+        .testimonial-text { color: #4b5563; font-size: 15px; line-height: 1.8; margin-bottom: 25px; font-style: italic; }
         .testimonial-author { display: flex; align-items: center; gap: 15px; }
         .author-image { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
         .author-name { font-size: 16px; color: #1f2937; font-weight: 600; margin-bottom: 3px; }
@@ -202,21 +202,34 @@ export default function HealthcarePlus() {
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
+          .hero-title { font-size: 42px; }
           .features-cards { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
-          .hero-content, .about-content { grid-template-columns: 1fr; text-align: center; }
-          .hero-title { font-size: 36px; }
-          .hero-buttons { justify-content: center; flex-wrap: wrap; }
-          .hero-stats { justify-content: center; flex-wrap: wrap; }
-          .features-cards { grid-template-columns: 1fr; }
-          .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
-          .section-title { font-size: 32px; }
-          .cta-title { font-size: 32px; }
-          .cta-buttons { flex-direction: column; align-items: center; }
-          .about-feature-item { text-align: left; }
+          .hero { padding: 80px 0 40px; }
+          .hero-content, .about-content { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+          .hero-title { font-size: 32px; }
+          .hero-description { font-size: 16px; margin-bottom: 25px; }
+          .hero-buttons { justify-content: center; flex-direction: column; gap: 12px; }
+          .btn { width: 100%; justify-content: center; }
+          .hero-stats { justify-content: center; gap: 20px; flex-wrap: wrap; }
+          .stat-number { font-size: 32px; }
+          .features-section { margin-top: 20px; padding-bottom: 40px; }
+          .features-cards { grid-template-columns: 1fr; gap: 15px; }
+          .feature-mini-card { padding: 25px; }
+          .about-section { padding: 40px 0; }
+          .section-title { font-size: 28px; }
+          .section-description { font-size: 16px; margin-bottom: 30px; }
+          .services-grid, .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+          .service-card, .testimonial-card { padding: 25px; }
+          .cta-title { font-size: 28px; }
+          .cta-text { font-size: 16px; }
+          .cta-buttons { flex-direction: column; gap: 15px; }
+          .about-text { text-align: left; }
+          .about-feature-item { align-items: flex-start; }
           .image-badge { display: none; }
-          .about-stats { position: static; margin-top: 20px; }
+          .about-stats { position: static; margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; justify-content: center; }
+          .about-stat { padding: 15px; }
         }
       `}</style>
 
@@ -347,7 +360,7 @@ export default function HealthcarePlus() {
                   <div key={f} className="about-feature-item" style={{ marginBottom: 0, gap: '10px' }}>
                     <div className="check-icon" style={{ width: '22px', height: '22px', fontSize: '12px' }}>✓</div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <h4 style={{ fontSize: '15px', margin: 0 }}>{f}</h4>
+                      <h4 style={{ fontSize: '15px', margin: 0, color: '#1f2937' }}>{f}</h4>
                     </div>
                   </div>
                 ))}
