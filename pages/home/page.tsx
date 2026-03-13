@@ -345,9 +345,9 @@ export default function HealthcarePlus() {
         <div className="container">
           <div className="top-bar-content">
             <div className="contact-info">
-              <span><i>📞</i> +1 (555) 123-4567</span>
-              <span><i>✉️</i> info@healthcareplus.com</span>
-              <span><i>🕐</i> Mon - Sat: 8:00 AM - 8:00 PM</span>
+              <span><i>📞</i> +91 9860802592, +91 9158393859</span>
+              <span><i>✉️</i> vriddhicare@gmail.com</span>
+              <span><i>🕐</i> 24/7 Care & Emergency Support</span>
             </div>
             <div className="social-links">
               <a href="#" className="social-icon">f</a>
@@ -364,7 +364,7 @@ export default function HealthcarePlus() {
         <div className="container">
           <div className="nav-wrapper">
             <a href="#home" className="logo" onClick={(e) => { e.preventDefault(); scrollTo('home'); }}>
-              <img src="/log.png" alt="HealthCare Plus Logo" className="logo-img" />
+              <img src="/log.png" alt="Vriddhicare Logo" className="logo-img" />
             </a>
             <ul className={`nav-menu${menuOpen ? ' active' : ''}`}>
               {[
@@ -403,10 +403,9 @@ export default function HealthcarePlus() {
                 <span className="badge-dot" />
                 Professional Healthcare Services
               </span>
-              <h1 className="hero-title">Caring for Your Health, Every Step of the Way</h1>
+              <h1 className="hero-title">Compassionate Home Patient Care & Elder Care Services</h1>
               <p className="hero-description">
-                Experience compassionate, comprehensive medical care with our team of expert healthcare professionals.
-                We're committed to your well-being with advanced technology and personalized treatment plans.
+                Providing professional, compassionate, and reliable home healthcare and elder care services for families who want the best care for their loved ones in the comfort of their home.
               </p>
               <div className="hero-buttons">
                 <Link href="/appointment" className="btn btn-primary" style={{ textDecoration: 'none' }}>Get Started</Link>
@@ -458,10 +457,10 @@ export default function HealthcarePlus() {
         <div className="container">
           <div className="features-cards">
             {[
-              { icon: '🚑', title: 'Emergency Care', text: '24/7 emergency services', id: 'feat-1' },
-              { icon: '🏥', title: 'Modern Facility', text: 'Advanced medical equipment', id: 'feat-2' },
-              { icon: '👨‍⚕️', title: 'Expert Team', text: 'Qualified specialists', id: 'feat-3' },
-              { icon: '💊', title: 'Pharmacy', text: 'In-house medication', id: 'feat-4' },
+              { icon: '👨‍⚕️', title: 'Experienced Nurses', text: 'Professional & certified team', id: 'feat-1' },
+              { icon: '🏡', title: 'Personalized Care', text: 'Tailored home care services', id: 'feat-2' },
+              { icon: '🚑', title: '24/7 Support', text: 'Round-the-clock assistance', id: 'feat-3' },
+              { icon: '❤️', title: 'Trusted Service', text: 'Trusted by 500+ families', id: 'feat-4' },
             ].map((f) => (
               <div
                 key={f.id}
@@ -490,38 +489,47 @@ export default function HealthcarePlus() {
                 className="facility-image"
               />
               <div className="experience-badge">
-                <h3>20+</h3>
-                <p>Years of Excellence</p>
+                <h3>7+</h3>
+                <p>Years of Service</p>
               </div>
               <div className="about-stats">
-                <div className="about-stat"><h4>98%</h4><p>Success Rate</p></div>
-                <div className="about-stat"><h4>100+</h4><p>Beds Available</p></div>
+                <div className="about-stat"><h4>500+</h4><p>Happy Families</p></div>
+                <div className="about-stat"><h4>100+</h4><p>Certified Nurses</p></div>
               </div>
             </div>
             <div className="about-text">
               <span className="section-badge">About Us</span>
-              <h2 className="section-title">Welcome to HealthCare Plus Medical Center</h2>
-              <p className="about-description">
-                We are a leading healthcare provider committed to delivering exceptional medical services with compassion
-                and expertise. Our state-of-the-art facility is equipped with the latest technology to ensure accurate
-                diagnosis and effective treatment.
-              </p>
-              <div className="about-features">
+              <h2 className="section-title" style={{ fontSize: '32px', lineHeight: '1.2' }}>Compassionate Home Patient Care & Elder Care Services</h2>
+              <div className="about-description">
+                <p style={{ marginBottom: '15px' }}>
+                  Providing professional, compassionate, and reliable home healthcare and elder care services for families who want the best care for their loved ones in the comfort of their home.
+                </p>
+                <p style={{ marginBottom: '15px' }}>
+                  With 7+ years of experience in patient care and elderly assistance, our team of 100+ qualified and government-certified nurses and caregivers have successfully cared for 500+ patients with dedication, dignity, and professionalism.
+                </p>
+                <p style={{ marginBottom: '25px' }}>
+                  We understand that every patient and elderly individual deserves personalized care, emotional support, and medical attention. Our trained healthcare professionals ensure safety, comfort, and well-being for your loved ones at home.
+                </p>
+              </div>
+              
+              <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#1f2937', marginBottom: '15px' }}>Our Commitment</h3>
+              <div className="about-features" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px', marginBottom: '30px' }}>
                 {[
-                  { title: 'Experienced Medical Team', text: 'Board-certified specialists with extensive experience in their fields' },
-                  { title: 'Advanced Technology', text: 'Latest medical equipment for precise diagnosis and treatment' },
-                  { title: 'Patient-Centered Care', text: "Personalized treatment plans tailored to each patient's needs" },
+                  'Professional & Experienced Nurses',
+                  'Personalized Home Care Services',
+                  '24/7 Care & Emergency Support',
+                  'Trusted by 500+ Families',
+                  '100+ Certified Caregivers'
                 ].map((f) => (
-                  <div key={f.title} className="about-feature-item">
-                    <div className="check-icon">✓</div>
-                    <div>
-                      <h4>{f.title}</h4>
-                      <p>{f.text}</p>
+                  <div key={f} className="about-feature-item" style={{ marginBottom: 0, gap: '10px' }}>
+                    <div className="check-icon" style={{ width: '22px', height: '22px', fontSize: '12px' }}>✓</div>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <h4 style={{ fontSize: '15px', margin: 0 }}>{f}</h4>
                     </div>
                   </div>
                 ))}
               </div>
-              <button className="btn btn-primary">Learn More About Us</button>
+              <Link href="/aboutus" className="btn btn-primary" style={{ textDecoration: 'none' }}>Learn More About Us</Link>
             </div>
           </div>
         </div>
@@ -538,27 +546,27 @@ export default function HealthcarePlus() {
           <div className="services-grid">
             {[
               {
-                id: 'svc-1', title: 'Emergency Care', text: '24/7 emergency medical services with rapid response team and advanced life support systems.',
+                id: 'svc-1', title: 'Nursing Care at Home', text: 'Injection administration, IV fluids, wound dressing, and vital monitoring.',
                 svg: <path d="M25 5C13.95 5 5 13.95 5 25C5 36.05 13.95 45 25 45C36.05 45 45 36.05 45 25C45 13.95 36.05 5 25 5ZM32 27H27V32H23V27H18V23H23V18H27V23H32V27Z" fill="#10B981" />,
               },
               {
-                id: 'svc-2', title: 'Specialist Consultation', text: 'Expert consultations with highly qualified specialists across multiple medical disciplines.',
+                id: 'svc-2', title: 'Post-Hospitalization', text: 'Medication management, physiotherapy assistance, and daily health monitoring.',
                 svg: <path d="M25 5C13.95 5 5 13.95 5 25C5 36.05 13.95 45 25 45C36.05 45 45 36.05 45 25C45 13.95 36.05 5 25 5ZM25 13C28.31 13 31 15.69 31 19C31 22.31 28.31 25 25 25C21.69 25 19 22.31 19 19C19 15.69 21.69 13 25 13ZM25 39.2C19.75 39.2 15.15 36.42 12.5 32.19C12.56 27.9 21 25.55 25 25.55C28.99 25.55 37.44 27.9 37.5 32.19C34.85 36.42 30.25 39.2 25 39.2Z" fill="#10B981" />,
               },
               {
-                id: 'svc-3', title: 'Cardiology', text: 'Comprehensive heart care with advanced diagnostic tools and treatment options.',
+                id: 'svc-3', title: 'ICU Care at Home', text: 'ICU-level monitoring, medical equipment handling, and continuous patient supervision.',
                 svg: <path d="M39.5 15C39.5 9.2 34.8 4.5 29 4.5C24.86 4.5 21.27 6.79 19.5 10.17C17.73 6.79 14.14 4.5 10 4.5C4.2 4.5 -0.5 9.2 -0.5 15C-0.5 21.69 5.14 27 18.89 39.73L19.5 40.3L20.11 39.73C33.86 27 39.5 21.69 39.5 15Z" fill="#10B981" />,
               },
               {
-                id: 'svc-4', title: 'Laboratory Services', text: 'State-of-the-art lab facilities for accurate diagnostic testing and analysis.',
+                id: 'svc-4', title: 'Personal Care Assistance', text: 'Caregivers assist elderly individuals with daily routines such as bathing, grooming, and meals.',
                 svg: <path d="M42 8H8C5.79 8 4 9.79 4 12V38C4 40.21 5.79 42 8 42H42C44.21 42 46 40.21 46 38V12C46 9.79 44.21 8 42 8ZM40 32H10V18H40V32Z" fill="#10B981" />,
               },
               {
-                id: 'svc-5', title: 'Pharmacy', text: 'In-house pharmacy with comprehensive medication management and counseling.',
+                id: 'svc-5', title: 'Companionship Care', text: 'Emotional support, friendly companionship, conversation, and outdoor walks.',
                 svg: <path d="M38 4H12C9.79 4 8 5.79 8 8V42C8 44.21 9.79 46 12 46H38C40.21 46 42 44.21 42 42V8C42 5.79 40.21 4 38 4ZM28 38H22V32H28V38ZM28 28H22V10H28V28Z" fill="#10B981" />,
               },
               {
-                id: 'svc-6', title: 'Health Checkups', text: 'Comprehensive health screening packages for preventive care and early detection.',
+                id: 'svc-6', title: 'Attendant Care Services', text: 'Feeding assistance, personal hygiene support, and bedridden patient care.',
                 svg: <path d="M39 5H11C8.24 5 6 7.24 6 10V40C6 42.76 8.24 45 11 45H39C41.76 45 44 42.76 44 40V10C44 7.24 41.76 5 39 5ZM20 35L12 27L15.06 23.94L20 28.88L34.94 13.94L38 17L20 35Z" fill="#10B981" />,
               },
             ].map((s) => (
@@ -582,18 +590,18 @@ export default function HealthcarePlus() {
       </section>
 
       {/* ── DOCTORS ── */}
-      <section className="doctors-section" id="doctors">
+      {/* <section className="doctors-section" id="doctors">
         <div className="container">
           <div className="section-header">
-            <span className="section-badge">Our Team</span>
-            <h2 className="section-title">Meet Our Expert Doctors</h2>
+            <span className="section-badge">Certified Caregivers</span>
+            <h2 className="section-title">Meet Our Professional Staff</h2>
             <p className="section-description">Our dedicated team of healthcare professionals is here to serve you</p>
           </div>
           <div className="doctors-grid">
             {[
-              { id: 'doc-1', name: 'Dr. Sarah Johnson', specialty: 'Cardiologist', exp: '15 years experience', rating: '4.9', img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop' },
-              { id: 'doc-2', name: 'Dr. Michael Chen', specialty: 'Neurologist', exp: '12 years experience', rating: '4.8', img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop' },
-              { id: 'doc-3', name: 'Dr. Emily Brown', specialty: 'Pediatrician', exp: '10 years experience', rating: '5.0', img: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop' },
+              { id: 'doc-1', name: 'Priya Sharma', specialty: 'Senior Nurse', exp: '7 years experience', rating: '4.9', img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop' },
+              { id: 'doc-2', name: 'Ramesh Patel', specialty: 'Caregiver', exp: '5 years experience', rating: '4.8', img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop' },
+              { id: 'doc-3', name: 'Sunita Verma', specialty: 'Elder Care Specialist', exp: '8 years experience', rating: '5.0', img: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop' },
             ].map((d) => (
               <div
                 key={d.id}
@@ -621,7 +629,7 @@ export default function HealthcarePlus() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── TESTIMONIALS ── */}
       <section className="testimonials-section" id="testimonials">
@@ -635,20 +643,20 @@ export default function HealthcarePlus() {
             {[
               {
                 id: 'test-1',
-                text: '"Excellent care and professional staff. Dr. Johnson took time to explain everything and made me feel comfortable throughout my treatment."',
-                name: 'Jennifer Smith',
+                text: '"The caregivers were extremely professional and compassionate while taking care of my father after his surgery. Their dedication made a huge difference in his recovery."',
+                name: 'Rahul Sharma',
                 img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
               },
               {
                 id: 'test-2',
-                text: '"The facility is modern and clean. The staff is friendly and efficient. I highly recommend HealthCare Plus for anyone seeking quality medical care."',
-                name: 'Robert Williams',
+                text: '"We were worried about leaving our elderly mother alone at home, but their caregiver treated her like family. We are very thankful for their support."',
+                name: 'Meena Patil',
                 img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop',
               },
               {
                 id: 'test-3',
-                text: '"Best healthcare experience I\'ve had. The doctors are knowledgeable and caring. The entire process was smooth and stress-free."',
-                name: 'Maria Garcia',
+                text: '"The nursing staff is very well trained and responsible. They took excellent care of my grandfather. Highly recommended."',
+                name: 'Amit Deshmukh',
                 img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
               },
             ].map((t) => (
@@ -695,7 +703,7 @@ export default function HealthcarePlus() {
             <div>
               <div className="footer-logo">
                 <span className="logo-icon">+</span>
-                <span>HealthCare Plus</span>
+                <span>Vriddhicare</span>
               </div>
               <p className="footer-description">
                 Providing quality healthcare services with compassion and excellence. Your health is our priority.
@@ -718,23 +726,25 @@ export default function HealthcarePlus() {
             <div>
               <h4 className="footer-title">Services</h4>
               <ul className="footer-links">
-                {['Emergency Care', 'Cardiology', 'Laboratory', 'Pharmacy', 'Health Checkup', 'Dental Care'].map((s) => (
-                  <li key={s}><a href="#">{s}</a></li>
+                {['Home Patient Care', 'Elder Care Services', 'Nursing Care', 'Attendant Care', 'Emergency Support'].map((service) => (
+                  <li key={service}>
+                    <Link href="/services">{service}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
             <div>
               <h4 className="footer-title">Contact Info</h4>
               <ul className="footer-contact">
-                <li><i>📍</i> 123 Medical Center Drive, NY 10001</li>
-                <li><i>📞</i> +1 (555) 123-4567</li>
-                <li><i>✉️</i> info@healthcareplus.com</li>
-                <li><i>🕐</i> Mon-Sat: 8:00 AM - 8:00 PM</li>
+                <li><i>📍</i> 101, Vanashree Apartment, IT Park Road, Gayatri Nagar, Nagpur. 440022</li>
+                <li><i>📞</i> +91 9860802592, +91 9158393859</li>
+                <li><i>✉️</i> vriddhicare@gmail.com</li>
+                <li><i>🕐</i> 24/7 Care & Emergency Support</li>
               </ul>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2024 HealthCare Plus. All rights reserved.</p>
+            <p>© 2024 Vriddhicare. All rights reserved.</p>
             <div className="footer-bottom-links">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>

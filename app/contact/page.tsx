@@ -133,8 +133,8 @@ export default function ContactPage() {
       <div className="hidden lg:block bg-emerald-700 text-white py-2.5 text-sm">
         <div className="container mx-auto px-5 flex justify-between items-center">
           <div className="flex gap-8">
-            <span>📞 +1 (555) 123-4567</span>
-            <span>✉️ info@healthcareplus.com</span>
+            <span>📞 +91 9860802592, +91 9158393859</span>
+            <span>✉️ vriddhicare@gmail.com</span>
           </div>
           <div className="flex gap-4">
             {['f', 'in', 'tw', 'ig'].map(s => <span key={s} className="cursor-pointer hover:opacity-70">{s}</span>)}
@@ -171,10 +171,10 @@ export default function ContactPage() {
       <section className="relative z-10 -mt-12 container mx-auto px-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: '📞', title: 'Call Us', info: '+1 (555) 123-4567', sub: 'Mon-Sat 8AM-8PM' },
-            { icon: '✉️', title: 'Email Us', info: 'info@healthcareplus.com', sub: 'Response within 24h' },
-            { icon: '📍', title: 'Visit Us', info: '123 Medical Center Dr', sub: 'New York, NY 10001' },
-            { icon: '🕐', title: 'Hours', info: '8:00 AM - 8:00 PM', sub: 'Sun: Emergency Only' },
+            { icon: '📞', title: 'Call Us', info: '+91 9860802592, +91 9158393859', sub: 'Mon-Sat 8AM-8PM' },
+            { icon: '✉️', title: 'Email Us', info: 'vriddhicare@gmail.com', sub: 'Response within 24h' },
+            { icon: '📍', title: 'Visit Us', info: '101, Vanashree Apt, IT Park Rd', sub: 'Gayatri Nagar, Nagpur 440022' },
+            { icon: '🕐', title: 'Hours', info: '24/7 Care & Support', sub: 'Always open' },
           ].map((card, i) => (
             <motion.div
               key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
@@ -233,7 +233,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div className="rounded-2xl overflow-hidden shadow-2xl h-[400px] grayscale hover:grayscale-0 transition-all duration-700">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
+                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=101,%20Vanashree%20Apartment,%20IT%20Park%20Road,%20Gayatri%20Nagar,%20Nagpur+(Vriddhicare)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                 width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
               ></iframe>
             </div>
@@ -262,7 +262,7 @@ export default function ContactPage() {
                 <p className="opacity-90">Our 24/7 hotline is always open for immediate assistance</p>
               </div>
             </div>
-            <a href="tel:911" className="bg-white text-red-600 px-10 py-4 rounded-xl font-black text-xl hover:scale-105 transition-transform">CALL 911</a>
+            <a href="tel:+919860802592" className="bg-white text-red-600 px-10 py-4 rounded-xl font-black text-xl hover:scale-105 transition-transform">CALL NOW</a>
           </div>
         </div>
       </section>
@@ -288,7 +288,7 @@ export default function ContactPage() {
             <div>
               <div className="flex items-center gap-2 text-2xl font-bold text-emerald-500 mb-6">
                 <span className="w-10 h-10 bg-emerald-500 text-white flex items-center justify-center rounded-lg">+</span>
-                HealthCare Plus
+                Vriddhicare
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-8">
                 Providing quality healthcare services with compassion and excellence. Your health is our priority.
@@ -323,7 +323,7 @@ export default function ContactPage() {
             <div>
               <h4 className="text-lg font-bold mb-8">Services</h4>
               <ul className="space-y-4 text-slate-400 text-sm">
-                {['Emergency Care', 'Cardiology', 'Laboratory', 'Pharmacy', 'Health Checkup'].map((service) => (
+                {['Home Patient Care', 'Elder Care Services', 'Nursing Care', 'Attendant Care', 'Emergency Support'].map((service) => (
                   <li key={service}>
                     <Link href="#" className="hover:text-emerald-500 transition-colors">
                       {service}
@@ -339,19 +339,19 @@ export default function ContactPage() {
               <ul className="space-y-4 text-slate-400 text-sm">
                 <li className="flex gap-3">
                   <span className="text-emerald-500">📍</span>
-                  123 Medical Center Drive, NY 10001
+                  101, Vanashree Apartment, IT Park Road, Gayatri Nagar, Nagpur. 440022
                 </li>
                 <li className="flex gap-3">
                   <span className="text-emerald-500">📞</span>
-                  +1 (555) 123-4567
+                  +91 9860802592, +91 9158393859
                 </li>
                 <li className="flex gap-3">
                   <span className="text-emerald-500">✉️</span>
-                  info@healthcareplus.com
+                  vriddhicare@gmail.com
                 </li>
                 <li className="flex gap-3">
                   <span className="text-emerald-500">🕐</span>
-                  Mon-Sat: 8:00 AM - 8:00 PM
+                  24/7 Care & Emergency Support
                 </li>
               </ul>
             </div>
@@ -359,7 +359,7 @@ export default function ContactPage() {
 
           {/* Bottom Footer */}
           <div className="py-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
-            <p>© 2026 HealthCare Plus. All rights reserved.</p>
+            <p>© 2026 Vriddhicare. All rights reserved.</p>
             <div className="flex gap-6">
               <Link href="#" className="hover:text-emerald-500">Privacy Policy</Link>
               <Link href="#" className="hover:text-emerald-500">Terms of Service</Link>

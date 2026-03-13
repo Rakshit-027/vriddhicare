@@ -39,7 +39,7 @@ const Counter = ({ target, label, suffix = '+' }: { target: number; label: strin
 };
 
 const TeamCard = ({ name, specialty, education, experience, img }: any) => (
-  <motion.div 
+  <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
@@ -78,14 +78,14 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
-      
+
       {/* ── TOP BAR ── */}
       <div className="hidden lg:block bg-emerald-700 text-white py-2 text-sm">
         <div className="container mx-auto px-5 flex justify-between items-center">
           <div className="flex gap-8">
-            <span>📞 +1 (555) 123-4567</span>
-            <span>✉️ info@healthcareplus.com</span>
-            <span>🕐 Mon - Sat: 8:00 AM - 8:00 PM</span>
+            <span>📞 +91 9860802592, +91 9158393859</span>
+            <span>✉️ vriddhicare@gmail.com</span>
+            <span>🕐 24/7 Care & Emergency Support</span>
           </div>
           <div className="flex gap-3">
             {['f', 'in', 'tw', 'ig'].map(social => (
@@ -107,8 +107,8 @@ export default function AboutPage() {
           <ul className={`fixed lg:static top-[70px] left-0 w-full lg:w-auto h-screen lg:h-auto bg-white flex flex-col lg:flex-row p-10 lg:p-0 gap-8 transition-all duration-300 ${menuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
             {['Home', 'Services', 'About Us', 'Contact'].map((item) => (
               <li key={item}>
-                <Link 
-                  href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`} 
+                <Link
+                  href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`}
                   className={`text-lg lg:text-base font-medium transition-colors hover:text-emerald-500 ${item === 'About Us' ? 'text-emerald-500 border-b-2 border-emerald-500' : 'text-gray-600'}`}
                 >
                   {item}
@@ -136,20 +136,20 @@ export default function AboutPage() {
             <span>/</span>
             <span className="text-emerald-500 font-semibold">About Us</span>
           </div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
           >
-            About HealthCare Plus
+            About Vriddhicare
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-500"
           >
-            Committed to excellence in healthcare for over 20 years
+            Committed to excellence in home healthcare for over 7 years
           </motion.p>
         </div>
       </section>
@@ -159,24 +159,38 @@ export default function AboutPage() {
         <div className="container mx-auto px-5 grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="inline-block px-5 py-2 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full mb-6">WHO WE ARE</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">Leading Healthcare Provider Since 2004</h2>
-            <p className="text-gray-500 leading-relaxed mb-6">
-              HealthCare Plus has been at the forefront of providing exceptional medical care for over two decades. Our commitment to patient-centered care, combined with state-of-the-art facilities and experienced medical professionals, makes us the trusted choice for families across the region.
-            </p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">Dedicated to Caring for Your Loved Ones</h2>
+            <div className="text-gray-500 leading-relaxed mb-6 space-y-4">
+              <p>
+                We are a trusted provider of home patient care and elder care services, committed to improving the quality of life for patients and senior citizens who need professional assistance at home.
+              </p>
+              <p>
+                For the past 7 years, we have been helping families by providing skilled nurses, trained caregivers, and compassionate attendants who ensure proper medical support and daily assistance.
+              </p>
+              <p>
+                Our team consists of 100+ government-certified nurses and healthcare assistants who are highly experienced in managing patient routines, post-hospitalization care, elderly support, and long-term care.
+              </p>
+              <p>
+                Having served 500+ patients, we have built a strong reputation for providing reliable and compassionate care that families can trust.
+              </p>
+              <p className="font-bold text-gray-800 text-lg pt-2 border-t border-gray-100">
+                Our goal is simple:<br />To bring hospital-quality care to the comfort of your home.
+              </p>
+            </div>
             <div className="grid grid-cols-2 gap-5">
-              <Counter target={20} label="Years of Experience" />
-              <Counter target={50} label="Expert Doctors" />
-              <Counter target={15000} label="Happy Patients" />
-              <Counter target={98} label="Success Rate" suffix="%" />
+              <Counter target={7} label="Years of Experience" />
+              <Counter target={100} label="Certified Caregivers" />
+              <Counter target={500} label="Happy Patients" />
+              <Counter target={100} label="Commitment" suffix="%" />
             </div>
           </div>
           <div className="relative">
-            <img 
-              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=600&fit=crop" 
-              alt="Hospital" 
+            <img
+              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=600&fit=crop"
+              alt="Hospital"
               className="rounded-2xl shadow-2xl w-full"
             />
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute bottom-10 left-10 bg-white p-6 rounded-xl shadow-xl flex items-center gap-4 border-l-4 border-emerald-500"
@@ -193,33 +207,54 @@ export default function AboutPage() {
 
       {/* ── MISSION & VISION ── */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-5 grid md:grid-cols-3 gap-8">
+        <div className="container mx-auto px-5 grid md:grid-cols-2 gap-8 justify-center">
           {[
-            { icon: "🎯", title: "Our Mission", text: "To provide compassionate, accessible, and high-quality healthcare services to our community through innovative medical practices." },
-            { icon: "👁️", title: "Our Vision", text: "To be recognized as the leading healthcare provider in the region, known for medical innovation and community health improvement." },
-            { icon: "💎", title: "Our Values", text: "Compassion, Excellence, Integrity, Innovation, and Respect guide everything we do and maintain the highest standards." }
+            {
+              icon: "👁️",
+              title: "Our Vision",
+              text: "To become a trusted leader in home healthcare and elder care services, delivering compassionate, reliable, and high-quality care that enhances the dignity, comfort, and independence of patients and senior citizens."
+            },
+            {
+              icon: "🎯",
+              title: "Our Mission",
+              text: "Our mission is to provide professional and personalized home healthcare services that improve the lives of patients and elderly individuals by:",
+              list: [
+                "Delivering compassionate care with respect and dignity",
+                "Providing trained and certified healthcare professionals",
+                "Ensuring safety, comfort, and emotional support",
+                "Helping families manage patient care with confidence",
+                "Promoting healthy and independent living for seniors"
+              ]
+            }
           ].map((item, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-10 rounded-2xl text-center border-2 border-transparent hover:border-emerald-500 hover:-translate-y-2 transition-all duration-300"
+              className="bg-white p-10 rounded-2xl text-center border-2 border-transparent hover:border-emerald-500 hover:-translate-y-2 transition-all duration-300 flex flex-col items-center"
             >
               <div className="text-5xl mb-6">{item.icon}</div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">{item.title}</h3>
-              <p className="text-gray-500 leading-relaxed text-sm">{item.text}</p>
+              <div className="text-gray-500 leading-relaxed text-sm text-left w-full flex flex-col justify-center h-full">
+                <p className={item.list ? "mb-4" : "text-center"}>{item.text}</p>
+                {item.list && (
+                  <ul className="list-disc pl-5 mt-2 space-y-2">
+                    {item.list.map((li, i) => <li key={i}>{li}</li>)}
+                  </ul>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* ── TEAM ── */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-5">
           <div className="text-center mb-16">
             <span className="text-emerald-500 font-bold uppercase tracking-widest text-sm">Our Team</span>
-            <h2 className="text-4xl font-bold mt-2">Meet Our Expert Doctors</h2>
+            <h2 className="text-4xl font-bold mt-2">Meet Our Professional Staff</h2>
             <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Our dedicated team of healthcare professionals is here to serve you with expertise and compassion</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -233,87 +268,86 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
-      /* ========== FACILITIES SECTION ========== */
-<section className="py-24 bg-gray-50">
-  <div className="container mx-auto px-5">
-    <div className="text-center mb-16">
-      <span className="inline-block px-5 py-2 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full mb-6">
-        OUR FACILITIES
-      </span>
-      <h2 className="text-4xl font-bold text-gray-900">
-        State-of-the-Art Medical Facilities
-      </h2>
-      <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-        We invest in the latest medical technology to provide you with the best care possible in a comfortable environment.
-      </p>
-    </div>
+      </section> */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-5">
+          <div className="text-center mb-16">
+            <span className="inline-block px-5 py-2 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full mb-6">
+              OUR FACILITIES
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900">
+              State-of-the-Art Medical Facilities
+            </h2>
+            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+              We invest in the latest medical technology to provide you with the best care possible in a comfortable environment.
+            </p>
+          </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {[
-        {
-          title: "Modern Operating Rooms",
-          desc: "Equipped with advanced surgical technology and monitoring systems for safe procedures.",
-          img: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&h=300&fit=crop",
-        },
-        {
-          title: "Intensive Care Unit",
-          desc: "24/7 critical care with state-of-the-art monitoring and life support systems.",
-          img: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=500&h=300&fit=crop",
-        },
-        {
-          title: "Diagnostic Laboratory",
-          desc: "Advanced lab equipment for accurate and rapid diagnostic testing and analysis.",
-          img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&h=300&fit=crop",
-        },
-        {
-          title: "Comfortable Patient Rooms",
-          desc: "Private and semi-private rooms designed for patient comfort and speedy recovery.",
-          img: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=500&h=300&fit=crop",
-        },
-      ].map((facility, idx) => (
-        <motion.div
-          key={idx}
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: idx * 0.1 }}
-          className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
-        >
-          <div className="h-48 overflow-hidden">
-            <img
-              src={facility.img}
-              alt={facility.title}
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Modern Operating Rooms",
+                desc: "Equipped with advanced surgical technology and monitoring systems for safe procedures.",
+                img: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500&h=300&fit=crop",
+              },
+              {
+                title: "Intensive Care Unit",
+                desc: "24/7 critical care with state-of-the-art monitoring and life support systems.",
+                img: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=500&h=300&fit=crop",
+              },
+              {
+                title: "Diagnostic Laboratory",
+                desc: "Advanced lab equipment for accurate and rapid diagnostic testing and analysis.",
+                img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&h=300&fit=crop",
+              },
+              {
+                title: "Comfortable Patient Rooms",
+                desc: "Private and semi-private rooms designed for patient comfort and speedy recovery.",
+                img: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=500&h=300&fit=crop",
+              },
+            ].map((facility, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={facility.img}
+                    alt={facility.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{facility.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{facility.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">{facility.title}</h3>
-            <p className="text-sm text-gray-500 leading-relaxed">{facility.desc}</p>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* ── TIMELINE ── */}
       <section className="py-20 bg-white border-t border-gray-100">
         <div className="container mx-auto px-5">
           <div className="text-center mb-16">
             <span className="text-emerald-500 font-bold text-sm">OUR JOURNEY</span>
-            <h2 className="text-4xl font-bold mt-2">20 Years of Excellence</h2>
+            <h2 className="text-4xl font-bold mt-2">7+ Years of Excellence</h2>
           </div>
           <div className="relative max-w-4xl mx-auto before:absolute before:left-1/2 before:top-0 before:bottom-0 before:w-0.5 before:bg-emerald-100 before:-translate-x-1/2 hidden md:block">
             {[
-              { year: "2004", title: "Foundation", text: "HealthCare Plus was established with a vision to provide quality healthcare." },
+              { year: "2004", title: "Foundation", text: "Vriddhicare was established with a vision to provide quality healthcare." },
               { year: "2010", title: "Expansion", text: "Opened our specialized cardiac care center with advanced diagnostic equipment." },
               { year: "2015", title: "Recognition", text: "Received national healthcare excellence award for patient care and innovation." },
               { year: "2024", title: "Present Day", text: "Continuing our mission with 50+ specialists serving 15,000+ patients." }
             ].map((milestone, idx) => (
               <div key={idx} className={`relative flex items-center mb-16 ${idx % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
                 <div className="absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-emerald-500 rounded-full border-4 border-white shadow-md z-10" />
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -328,68 +362,68 @@ export default function AboutPage() {
           </div>
           {/* Mobile Timeline View */}
           <div className="md:hidden space-y-8">
-             {/* Simple list for mobile... */}
+            {/* Simple list for mobile... */}
           </div>
         </div>
       </section>
-<section className="py-24 bg-gray-50">
-  <div className="container mx-auto px-5">
-    <div className="text-center mb-16">
-      <span className="inline-block px-5 py-2 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full mb-6">
-        PATIENT STORIES
-      </span>
-      <h2 className="text-4xl font-bold text-gray-900">What Our Patients Say</h2>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[
-        {
-          name: "Jennifer Smith",
-          role: "Cardiac Patient",
-          text: "The care I received at HealthCare Plus was exceptional. The doctors are knowledgeable, the staff is friendly, and the facilities are top-notch. I wouldn't trust my health to anyone else.",
-          img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-        },
-        {
-          name: "Robert Williams",
-          role: "General Care Patient",
-          text: "From emergency care to follow-up appointments, every interaction has been professional and caring. The medical team truly goes above and beyond for their patients.",
-          img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
-        },
-        {
-          name: "Maria Garcia",
-          role: "Pediatric Parent",
-          text: "As a parent, finding the right healthcare for my children is crucial. Dr. Brown and the pediatric team have been wonderful - professional, patient, and truly caring.",
-          img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-        },
-      ].map((testimonial, idx) => (
-        <motion.div
-          key={idx}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: idx * 0.1 }}
-          className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-        >
-          <div className="text-yellow-400 text-xl mb-4">★★★★★</div>
-          <p className="text-gray-500 italic leading-relaxed mb-8">
-            "{testimonial.text}"
-          </p>
-          <div className="flex items-center gap-4">
-            <img
-              src={testimonial.img}
-              alt={testimonial.name}
-              className="w-12 h-12 rounded-full object-cover"
-            />
-            <div>
-              <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
-              <p className="text-xs text-emerald-500 font-medium">{testimonial.role}</p>
-            </div>
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-5">
+          <div className="text-center mb-16">
+            <span className="inline-block px-5 py-2 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full mb-6">
+              PATIENT STORIES
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900">What Our Patients Say</h2>
           </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Rahul Sharma",
+                role: "Patient - Nagpur",
+                text: "The caregivers were extremely professional and compassionate while taking care of my father after his surgery. Their dedication made a huge difference in his recovery.",
+                img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+              },
+              {
+                name: "Meena Patil",
+                role: "Patient - Nagpur",
+                text: "We were worried about leaving our elderly mother alone at home, but their caregiver treated her like family. We are very thankful for their support.",
+                img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+              },
+              {
+                name: "Amit Deshmukh",
+                role: "Patient - Nagpur",
+                text: "The nursing staff is very well trained and responsible. They took excellent care of my grandfather. Highly recommended.",
+                img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+              },
+            ].map((testimonial, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="text-yellow-400 text-xl mb-4">★★★★★</div>
+                <p className="text-gray-500 italic leading-relaxed mb-8">
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center gap-4">
+                  <img
+                    src={testimonial.img}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
+                    <p className="text-xs text-emerald-500 font-medium">{testimonial.role}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── CTA ── */}
       <section className="bg-emerald-600 py-16">
@@ -404,100 +438,105 @@ export default function AboutPage() {
       </section>
 
       {/* ── FOOTER (Consistent across pages) ── */}
-     <footer className="bg-slate-900 text-white pt-20">
-  <div className="container mx-auto px-5">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-slate-800">
-      {/* Brand Column */}
-      <div>
-        <div className="flex items-center gap-2 text-2xl font-bold text-emerald-500 mb-6">
-          <span className="w-10 h-10 bg-emerald-500 text-white flex items-center justify-center rounded-lg">+</span>
-          HealthCare Plus
-        </div>
-        <p className="text-slate-400 text-sm leading-relaxed mb-8">
-          Providing quality healthcare services with compassion and excellence. Your health is our priority.
-        </p>
-        <div className="flex gap-4">
-          {['f', 'in', 't', 'i'].map((social) => (
-            <div
-              key={social}
-              className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 cursor-pointer transition-all"
-            >
-              <span className="text-xs font-bold uppercase">{social}</span>
+      <footer className="bg-slate-900 text-white pt-20">
+        <div className="container mx-auto px-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-slate-800">
+            {/* Brand Column */}
+            <div>
+              <div className="flex items-center gap-2 text-2xl font-bold text-emerald-500 mb-6">
+                <span className="w-10 h-10 bg-emerald-500 text-white flex items-center justify-center rounded-lg">+</span>
+                Vriddhicare
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                Providing quality healthcare services with compassion and excellence. Your health is our priority.
+              </p>
+              <div className="flex gap-4">
+                {[
+                  { id: 'f', label: 'FB' },
+                  { id: 'in', label: 'IN' },
+                  { id: 't', label: 'TW' },
+                  { id: 'i', label: 'IG' }
+                ].map((social) => (
+                  <div
+                    key={social.id}
+                    className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 cursor-pointer transition-all"
+                  >
+                    <span className="text-[10px] font-bold uppercase">{social.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-bold mb-8">Quick Links</h4>
+              <ul className="space-y-4 text-slate-400 text-sm">
+                {['Home', 'Services', 'About Us', 'Contact'].map((link) => (
+                  <li key={link}>
+                    <Link href="#" className="hover:text-emerald-500 transition-colors">
+                      {link}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services Links */}
+            <div>
+              <h4 className="text-lg font-bold mb-8">Services</h4>
+              <ul className="space-y-4 text-slate-400 text-sm">
+                {['Home Patient Care', 'Elder Care Services', 'Nursing Care', 'Attendant Care', 'Emergency Support'].map((service) => (
+                  <li key={service}>
+                    <Link href="/services" className="hover:text-emerald-500 transition-colors">
+                      {service}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-lg font-bold mb-8">Contact Info</h4>
+              <ul className="space-y-4 text-slate-400 text-sm">
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">📍</span>
+                  101, Vanashree Apartment, IT Park Road, Gayatri Nagar, Nagpur. 440022
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">📞</span>
+                  +91 9860802592, +91 9158393859
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">✉️</span>
+                  vriddhicare@gmail.com
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">🕐</span>
+                  24/7 Care & Emergency Support
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Footer */}
+          <div className="py-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
+            <p>© 2026 Vriddhicare. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="#" className="hover:text-emerald-500">Privacy Policy</Link>
+              <Link href="#" className="hover:text-emerald-500">Terms of Service</Link>
+              <Link href="#" className="hover:text-emerald-500">Cookie Policy</Link>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Quick Links */}
-      <div>
-        <h4 className="text-lg font-bold mb-8">Quick Links</h4>
-        <ul className="space-y-4 text-slate-400 text-sm">
-          {['Home', 'Services', 'About Us', 'Contact'].map((link) => (
-            <li key={link}>
-              <Link href="#" className="hover:text-emerald-500 transition-colors">
-                {link}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Services Links */}
-      <div>
-        <h4 className="text-lg font-bold mb-8">Services</h4>
-        <ul className="space-y-4 text-slate-400 text-sm">
-          {['Emergency Care', 'Cardiology', 'Laboratory', 'Pharmacy', 'Health Checkup'].map((service) => (
-            <li key={service}>
-              <Link href="#" className="hover:text-emerald-500 transition-colors">
-                {service}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Contact Info */}
-      <div>
-        <h4 className="text-lg font-bold mb-8">Contact Info</h4>
-        <ul className="space-y-4 text-slate-400 text-sm">
-          <li className="flex gap-3">
-            <span className="text-emerald-500">📍</span>
-            123 Medical Center Drive, NY 10001
-          </li>
-          <li className="flex gap-3">
-            <span className="text-emerald-500">📞</span>
-            +1 (555) 123-4567
-          </li>
-          <li className="flex gap-3">
-            <span className="text-emerald-500">✉️</span>
-            info@healthcareplus.com
-          </li>
-          <li className="flex gap-3">
-            <span className="text-emerald-500">🕐</span>
-            Mon-Sat: 8:00 AM - 8:00 PM
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    {/* Bottom Footer */}
-    <div className="py-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
-      <p>© 2026 HealthCare Plus. All rights reserved.</p>
-      <div className="flex gap-6">
-        <Link href="#" className="hover:text-emerald-500">Privacy Policy</Link>
-        <Link href="#" className="hover:text-emerald-500">Terms of Service</Link>
-        <Link href="#" className="hover:text-emerald-500">Cookie Policy</Link>
-      </div>
-    </div>
-  </div>
-</footer>
+      </footer>
 
       {/* ── FLOATERS ── */}
-      <a href="#" className="fixed bottom-8 right-8 w-15 h-15 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl z-[999] hover:scale-110 transition-transform animate-bounce">
-         <span className="text-white text-3xl">💬</span>
+      <a href="https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0" target="_blank" className="fixed bottom-8 right-8 w-15 h-15 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl z-[999] hover:scale-110 transition-transform animate-bounce">
+        <span className="text-white text-3xl">💬</span>
       </a>
-      
-      <button 
+
+      <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className={`fixed bottom-28 right-9 w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-xl transition-all duration-300 z-[998] ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
       >
