@@ -124,16 +124,13 @@ export default function AppointmentBooking() {
         )}
       </AnimatePresence>
 
-      <nav className="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2">
-          <img src="/log.png" alt="Logo" className="h-14" />
-        </Link>
-        <div className="hidden md:flex bg-white px-6 py-2 rounded-full shadow-sm border border-slate-100 gap-8 text-sm font-medium text-slate-500">
-          <span className={step >= 1 ? "text-emerald-600 font-bold" : ""}>01 Details</span>
-          <span className={step >= 2 ? "text-emerald-600 font-bold" : ""}>02 Schedule</span>
-          <span className={step >= 3 ? "text-emerald-600 font-bold" : ""}>03 Confirm</span>
+      <div className="max-w-7xl mx-auto px-6 pt-12">
+        <div className="flex bg-white px-6 py-4 rounded-3xl shadow-sm border border-slate-100 gap-8 text-sm font-black justify-center mb-8">
+          <span className={step >= 1 ? "text-emerald-600" : "text-slate-300"}>01 Details</span>
+          <span className={step >= 2 ? "text-emerald-600" : "text-slate-300"}>02 Schedule</span>
+          <span className={step >= 3 ? "text-emerald-600" : "text-slate-300"}>03 Confirm</span>
         </div>
-      </nav>
+      </div>
 
       <main className="max-w-[1100px] mx-auto grid lg:grid-cols-2 gap-12 px-6 mt-8 items-start">
         {/* Left Side: Info */}
@@ -223,7 +220,7 @@ export default function AppointmentBooking() {
                   className="space-y-6"
                 >
                   <div className="space-y-4">
-                    <button onClick={prevStep} className="flex items-center gap-2 text-slate-400 font-bold text-sm hover:text-slate-600 transition-colors">
+                    <button onClick={prevStep} type="button" className="flex items-center gap-2 text-slate-400 font-bold text-sm hover:text-slate-600 transition-colors">
                       <ArrowLeft size={16} /> GO BACK
                     </button>
                     <h2 className="text-2xl font-bold">Pick a Schedule</h2>
@@ -266,7 +263,7 @@ export default function AppointmentBooking() {
                   className="space-y-6"
                 >
                   <div className="space-y-4">
-                    <button onClick={prevStep} className="flex items-center gap-2 text-slate-400 font-bold text-sm hover:text-slate-600 transition-colors">
+                    <button onClick={prevStep} type="button" className="flex items-center gap-2 text-slate-400 font-bold text-sm hover:text-slate-600 transition-colors">
                       <ArrowLeft size={16} /> GO BACK
                     </button>
                     <h2 className="text-2xl font-bold">Final Notes</h2>

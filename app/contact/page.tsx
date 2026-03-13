@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -37,16 +37,8 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 /* ========== MAIN PAGE ========== */
 
 export default function ContactPage() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -95,7 +87,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans">
+    <div className="min-h-screen bg-white text-gray-900 font-sans pb-20">
 
       {/* ── FULLSCREEN LOADER ── */}
       <AnimatePresence>
@@ -129,33 +121,6 @@ export default function ContactPage() {
         )}
       </AnimatePresence>
 
-      {/* ── TOP BAR & NAVBAR (Consistent with Home/About) ── */}
-      <div className="hidden lg:block bg-emerald-700 text-white py-2.5 text-sm">
-        <div className="container mx-auto px-5 flex justify-between items-center">
-          <div className="flex gap-8">
-            <span>📞 +91 9860802592, +91 9158393859</span>
-            <span>✉️ vriddhicare@gmail.com</span>
-          </div>
-          <div className="flex gap-4">
-            {['f', 'in', 'tw', 'ig'].map(s => <span key={s} className="cursor-pointer hover:opacity-70">{s}</span>)}
-          </div>
-        </div>
-      </div>
-
-      <nav className={`sticky top-0 z-[1000] bg-white transition-all ${scrolled ? 'shadow-lg py-3' : 'py-5'}`}>
-        <div className="container mx-auto px-5 flex justify-between items-center">
-          <Link href="/"><img src="/log.png" alt="Logo" className="h-14" /></Link>
-          <ul className={`fixed lg:static top-20 left-0 w-full lg:w-auto h-screen lg:h-auto bg-white flex flex-col lg:flex-row p-10 lg:p-0 gap-8 transition-all duration-300 ${menuOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full lg:translate-x-0'}`}>
-            {['Home', 'Services', 'About Us', 'Contact'].map((item) => (
-              <li key={item}>
-                <Link href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`} className={`font-medium hover:text-emerald-500 ${item === 'Contact' ? 'text-emerald-500 border-b-2 border-emerald-500' : 'text-gray-600'}`}>{item}</Link>
-              </li>
-            ))}
-          </ul>
-          <Link href="/appointment" className="hidden sm:block bg-emerald-500 text-white px-6 py-2.5 rounded-lg font-bold hover:bg-emerald-600">Book Appointment</Link>
-        </div>
-      </nav>
-
       {/* ── PAGE HEADER ── */}
       <section className="bg-gradient-to-br from-emerald-50 to-white py-20 text-center">
         <div className="container mx-auto px-5">
@@ -171,9 +136,9 @@ export default function ContactPage() {
       <section className="relative z-10 -mt-12 container mx-auto px-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: '📞', title: 'Call Us', info: '+91 9860802592, +91 9158393859', sub: 'Mon-Sat 8AM-8PM' },
+            { icon: '📞', title: 'Call Us', info: '+91 9860802592, 9158393859', sub: 'Mon-Sat 8AM-8PM' },
             { icon: '✉️', title: 'Email Us', info: 'vriddhicare@gmail.com', sub: 'Response within 24h' },
-            { icon: '📍', title: 'Visit Us', info: '101, Vanashree Apt, IT Park Rd', sub: 'Gayatri Nagar, Nagpur 440022' },
+            { icon: '📍', title: 'Visit Us', info: '101, Vanashree Apt, Nagpur', sub: 'Nagpur 440022' },
             { icon: '🕐', title: 'Hours', info: '24/7 Care & Support', sub: 'Always open' },
           ].map((card, i) => (
             <motion.div
@@ -237,16 +202,6 @@ export default function ContactPage() {
                 width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
               ></iframe>
             </div>
-            <div className="bg-gray-50 p-8 rounded-2xl grid grid-cols-1 gap-6">
-              <div className="flex gap-4">
-                <span className="text-2xl">🚗</span>
-                <div><h4 className="font-bold">Free Parking</h4><p className="text-sm text-gray-500">Available for all visitors</p></div>
-              </div>
-              <div className="flex gap-4">
-                <span className="text-2xl">♿</span>
-                <div><h4 className="font-bold">Accessible</h4><p className="text-sm text-gray-500">Full wheelchair accessibility</p></div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -275,99 +230,10 @@ export default function ContactPage() {
             <p className="text-gray-500">Find quick answers to common inquiries</p>
           </div>
           <FAQItem question="How do I schedule an appointment?" answer="You can schedule via our online booking portal, call our hotline, or visit the front desk during working hours." />
-          <FAQItem question="Do you accept health insurance?" answer="Yes, we accept most major providers. Please bring your insurance card during your first visit for verification." />
-          <FAQItem question="What are your visiting hours?" answer="Our general visiting hours are 8:00 AM to 8:00 PM, Monday through Saturday." />
+          <FAQItem question="Do you provide home nursing?" answer="Yes, we provide professional nursing care, post-hospitalization care, and ICU setup at your home." />
+          <FAQItem question="What are your working hours?" answer="Our healthcare services and emergency hotline are available 24/7." />
         </div>
       </section>
-
-      {/* ── FOOTER ── */}
-      <footer className="bg-slate-900 text-white pt-20">
-        <div className="container mx-auto px-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-slate-800">
-            {/* Brand Column */}
-            <div>
-              <div className="flex items-center gap-2 text-2xl font-bold text-emerald-500 mb-6">
-                <span className="w-10 h-10 bg-emerald-500 text-white flex items-center justify-center rounded-lg">+</span>
-                Vriddhicare
-              </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                Providing quality healthcare services with compassion and excellence. Your health is our priority.
-              </p>
-              <div className="flex gap-4">
-                {['f', 'in', 't', 'i'].map((social) => (
-                  <div
-                    key={social}
-                    className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 cursor-pointer transition-all"
-                  >
-                    <span className="text-xs font-bold uppercase">{social}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-lg font-bold mb-8">Quick Links</h4>
-              <ul className="space-y-4 text-slate-400 text-sm">
-                {['Home', 'Services', 'About Us', 'Contact'].map((link) => (
-                  <li key={link}>
-                    <Link href="#" className="hover:text-emerald-500 transition-colors">
-                      {link}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Services Links */}
-            <div>
-              <h4 className="text-lg font-bold mb-8">Services</h4>
-              <ul className="space-y-4 text-slate-400 text-sm">
-                {['Home Patient Care', 'Elder Care Services', 'Nursing Care', 'Attendant Care', 'Emergency Support'].map((service) => (
-                  <li key={service}>
-                    <Link href="#" className="hover:text-emerald-500 transition-colors">
-                      {service}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h4 className="text-lg font-bold mb-8">Contact Info</h4>
-              <ul className="space-y-4 text-slate-400 text-sm">
-                <li className="flex gap-3">
-                  <span className="text-emerald-500">📍</span>
-                  101, Vanashree Apartment, IT Park Road, Gayatri Nagar, Nagpur. 440022
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-500">📞</span>
-                  +91 9860802592, +91 9158393859
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-500">✉️</span>
-                  vriddhicare@gmail.com
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-500">🕐</span>
-                  24/7 Care & Emergency Support
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Footer */}
-          <div className="py-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
-            <p>© 2026 Vriddhicare. All rights reserved.</p>
-            <div className="flex gap-6">
-              <Link href="#" className="hover:text-emerald-500">Privacy Policy</Link>
-              <Link href="#" className="hover:text-emerald-500">Terms of Service</Link>
-              <Link href="#" className="hover:text-emerald-500">Cookie Policy</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
 
       {/* ── SUCCESS MODAL ── */}
       <AnimatePresence>
@@ -390,8 +256,6 @@ export default function ContactPage() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <div className="fixed bottom-10 right-10 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-2xl cursor-pointer hover:scale-110 transition-transform">💬</div>
     </div>
   );
 }

@@ -67,66 +67,8 @@ const TeamCard = ({ name, specialty, education, experience, img }: any) => (
 /* ========== MAIN PAGE ========== */
 
 export default function AboutPage() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
-
-      {/* ── TOP BAR ── */}
-      <div className="hidden lg:block bg-emerald-700 text-white py-2 text-sm">
-        <div className="container mx-auto px-5 flex justify-between items-center">
-          <div className="flex gap-8">
-            <span>📞 +91 9860802592, +91 9158393859</span>
-            <span>✉️ vriddhicare@gmail.com</span>
-            <span>🕐 24/7 Care & Emergency Support</span>
-          </div>
-          <div className="flex gap-3">
-            {['f', 'in', 'tw', 'ig'].map(social => (
-              <a key={social} href="#" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-emerald-600 transition-all font-bold">
-                {social}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ── NAVIGATION ── */}
-      <nav className={`sticky top-0 z-[1000] bg-white transition-all duration-300 ${scrolled ? 'shadow-md py-3' : 'py-5'}`}>
-        <div className="container mx-auto px-5 flex justify-between items-center">
-          <Link href="/">
-            <img src="/log.png" alt="Logo" className="h-14 w-auto drop-shadow-md" />
-          </Link>
-
-          <ul className={`fixed lg:static top-[70px] left-0 w-full lg:w-auto h-screen lg:h-auto bg-white flex flex-col lg:flex-row p-10 lg:p-0 gap-8 transition-all duration-300 ${menuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
-            {['Home', 'Services', 'About Us', 'Contact'].map((item) => (
-              <li key={item}>
-                <Link
-                  href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`}
-                  className={`text-lg lg:text-base font-medium transition-colors hover:text-emerald-500 ${item === 'About Us' ? 'text-emerald-500 border-b-2 border-emerald-500' : 'text-gray-600'}`}
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex items-center gap-5">
-            <Link href="/appointment" className="hidden sm:block px-7 py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-all shadow-md">Book Appointment</Link>
-            <button className="lg:hidden flex flex-col gap-1.5" onClick={() => setMenuOpen(!menuOpen)}>
-              <span className={`w-6 h-0.5 bg-emerald-500 transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`w-6 h-0.5 bg-emerald-500 ${menuOpen ? 'opacity-0' : ''}`} />
-              <span className={`w-6 h-0.5 bg-emerald-500 transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-            </button>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden pb-20">
 
       {/* ── PAGE HEADER ── */}
       <section className="bg-gradient-to-br from-emerald-50 to-white py-20 text-center">
@@ -249,26 +191,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── TEAM ── */}
-      {/* <section className="py-20 bg-white">
-        <div className="container mx-auto px-5">
-          <div className="text-center mb-16">
-            <span className="text-emerald-500 font-bold uppercase tracking-widest text-sm">Our Team</span>
-            <h2 className="text-4xl font-bold mt-2">Meet Our Professional Staff</h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Our dedicated team of healthcare professionals is here to serve you with expertise and compassion</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            {[
-              { name: "Dr. Sarah Johnson", specialty: "Chief Cardiologist", education: "MD, FACC - Harvard Medical School", experience: "15 years experience", img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop" },
-              { name: "Dr. Michael Chen", specialty: "Senior Neurologist", education: "MD, PhD - Johns Hopkins University", experience: "12 years experience", img: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop" },
-              { name: "Dr. Emily Brown", specialty: "Pediatric Specialist", education: "MD, FAAP - Stanford Medical School", experience: "10 years experience", img: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop" },
-              { name: "Dr. James Wilson", specialty: "Orthopedic Surgeon", education: "MD, FAAOS - Yale School of Medicine", experience: "18 years experience", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop" }
-            ].map((doc, idx) => (
-              <TeamCard key={idx} {...doc} />
-            ))}
-          </div>
-        </div>
-      </section> */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-5">
           <div className="text-center mb-16">
@@ -340,10 +262,10 @@ export default function AboutPage() {
           </div>
           <div className="relative max-w-4xl mx-auto before:absolute before:left-1/2 before:top-0 before:bottom-0 before:w-0.5 before:bg-emerald-100 before:-translate-x-1/2 hidden md:block">
             {[
-              { year: "2004", title: "Foundation", text: "Vriddhicare was established with a vision to provide quality healthcare." },
-              { year: "2010", title: "Expansion", text: "Opened our specialized cardiac care center with advanced diagnostic equipment." },
-              { year: "2015", title: "Recognition", text: "Received national healthcare excellence award for patient care and innovation." },
-              { year: "2024", title: "Present Day", text: "Continuing our mission with 50+ specialists serving 15,000+ patients." }
+              { year: "2017", title: "Foundation", text: "Vriddhicare was established with a vision to provide quality healthcare at home." },
+              { year: "2019", title: "Expansion", text: "Expanded our team to 100+ certified caregivers across Nagpur." },
+              { year: "2022", title: "Recognition", text: "Received recognition for our excellence in post-hospitalization care." },
+              { year: "2024", title: "Present Day", text: "Continuing our mission to serve 500+ happy families with professional care." }
             ].map((milestone, idx) => (
               <div key={idx} className={`relative flex items-center mb-16 ${idx % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
                 <div className="absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-emerald-500 rounded-full border-4 border-white shadow-md z-10" />
@@ -360,12 +282,9 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-          {/* Mobile Timeline View */}
-          <div className="md:hidden space-y-8">
-            {/* Simple list for mobile... */}
-          </div>
         </div>
       </section>
+      
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-5">
           <div className="text-center mb-16">
@@ -409,11 +328,9 @@ export default function AboutPage() {
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center gap-4">
-                  <img
-                    src={testimonial.img}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-500 font-bold uppercase">
+                    {testimonial.name.split(' ').map(n=>n[0]).join('')}
+                  </div>
                   <div>
                     <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
                     <p className="text-xs text-emerald-500 font-medium">{testimonial.role}</p>
@@ -431,117 +348,21 @@ export default function AboutPage() {
           <h2 className="text-4xl font-bold mb-6">Join Our Family of Satisfied Patients</h2>
           <p className="text-lg opacity-90 mb-10 max-w-xl mx-auto">Experience the difference that compassionate, expert healthcare can make</p>
           <div className="flex flex-wrap justify-center gap-5">
-            <button className="px-10 py-4 bg-white text-emerald-600 font-bold rounded-lg hover:shadow-2xl transition-all">Schedule Appointment</button>
-            <button className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-emerald-600 transition-all">Contact Us</button>
+            <Link href="/appointment" className="px-10 py-4 bg-white text-emerald-600 font-bold rounded-lg hover:shadow-2xl transition-all">Schedule Appointment</Link>
+            <Link href="/contact" className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-emerald-600 transition-all">Contact Us</Link>
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER (Consistent across pages) ── */}
-      <footer className="bg-slate-900 text-white pt-20">
-        <div className="container mx-auto px-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-slate-800">
-            {/* Brand Column */}
-            <div>
-              <div className="flex items-center gap-2 text-2xl font-bold text-emerald-500 mb-6">
-                <span className="w-10 h-10 bg-emerald-500 text-white flex items-center justify-center rounded-lg">+</span>
-                Vriddhicare
-              </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                Providing quality healthcare services with compassion and excellence. Your health is our priority.
-              </p>
-              <div className="flex gap-4">
-                {[
-                  { id: 'f', label: 'FB' },
-                  { id: 'in', label: 'IN' },
-                  { id: 't', label: 'TW' },
-                  { id: 'i', label: 'IG' }
-                ].map((social) => (
-                  <div
-                    key={social.id}
-                    className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-emerald-500 cursor-pointer transition-all"
-                  >
-                    <span className="text-[10px] font-bold uppercase">{social.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-lg font-bold mb-8">Quick Links</h4>
-              <ul className="space-y-4 text-slate-400 text-sm">
-                {['Home', 'Services', 'About Us', 'Contact'].map((link) => (
-                  <li key={link}>
-                    <Link href="#" className="hover:text-emerald-500 transition-colors">
-                      {link}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Services Links */}
-            <div>
-              <h4 className="text-lg font-bold mb-8">Services</h4>
-              <ul className="space-y-4 text-slate-400 text-sm">
-                {['Home Patient Care', 'Elder Care Services', 'Nursing Care', 'Attendant Care', 'Emergency Support'].map((service) => (
-                  <li key={service}>
-                    <Link href="/services" className="hover:text-emerald-500 transition-colors">
-                      {service}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h4 className="text-lg font-bold mb-8">Contact Info</h4>
-              <ul className="space-y-4 text-slate-400 text-sm">
-                <li className="flex gap-3">
-                  <span className="text-emerald-500">📍</span>
-                  101, Vanashree Apartment, IT Park Road, Gayatri Nagar, Nagpur. 440022
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-500">📞</span>
-                  +91 9860802592, +91 9158393859
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-500">✉️</span>
-                  vriddhicare@gmail.com
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-emerald-500">🕐</span>
-                  24/7 Care & Emergency Support
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Footer */}
-          <div className="py-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
-            <p>© 2026 Vriddhicare. All rights reserved.</p>
-            <div className="flex gap-6">
-              <Link href="#" className="hover:text-emerald-500">Privacy Policy</Link>
-              <Link href="#" className="hover:text-emerald-500">Terms of Service</Link>
-              <Link href="#" className="hover:text-emerald-500">Cookie Policy</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      {/* ── FLOATERS ── */}
-      <a href="https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0" target="_blank" className="fixed bottom-8 right-8 w-15 h-15 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl z-[999] hover:scale-110 transition-transform animate-bounce">
-        <span className="text-white text-3xl">💬</span>
-      </a>
-
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-28 right-9 w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-xl transition-all duration-300 z-[998] ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
-      >
-        ↑
-      </button>
+      <style jsx global>{`
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0) scale(1.05); }
+          50% { transform: translateY(-10px) scale(1); }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 4s infinite ease-in-out;
+        }
+      `}</style>
     </div>
   );
 }

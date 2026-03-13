@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 /* ========== TYPES ========== */
 interface StatItem {
@@ -46,24 +45,11 @@ function StatCounter({ target, label, triggered }: StatItem & { triggered: boole
 
 /* ========== MAIN COMPONENT ========== */
 export default function HealthcarePlus() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const [statsTriggered, setStatsTriggered] = useState(false);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
 
   const heroStatsRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Map<string, HTMLElement>>(new Map());
-
-  /* ── Scroll effects ── */
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      setShowScrollTop(window.scrollY > 300);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   /* ── Counter observer ── */
   useEffect(() => {
@@ -93,15 +79,6 @@ export default function HealthcarePlus() {
     return () => observer.disconnect();
   }, []);
 
-  /* ── Keyboard: close menu on Escape ── */
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && menuOpen) setMenuOpen(false);
-    };
-    document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
-  }, [menuOpen]);
-
   const registerCard = (id: string) => (el: HTMLElement | null) => {
     if (el) cardRefs.current.set(id, el);
   };
@@ -112,46 +89,11 @@ export default function HealthcarePlus() {
     transition: '0.6s ease',
   });
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
-    setMenuOpen(false);
-  };
-
   return (
-    <>
+    <div className="pb-20">
       <style>{`
-        /* ===== RESET ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.6; overflow-x: hidden; }
+        /* ===== RESET & BASE ===== */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* ===== TOP BAR ===== */
-        .top-bar { background: #059669; color: white; padding: 10px 0; font-size: 14px; }
-        .top-bar-content { display: flex; justify-content: space-between; align-items: center; }
-        .contact-info { display: flex; gap: 30px; }
-        .contact-info span { display: flex; align-items: center; gap: 8px; }
-        .social-links { display: flex; gap: 10px; }
-        .social-icon { width: 30px; height: 30px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-weight: bold; transition: all 0.3s ease; }
-        .social-icon:hover { background: white; color: #10B981; transform: translateY(-2px); }
-
-        /* ===== NAVBAR ===== */
-        .navbar { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; transition: all 0.3s ease; }
-        .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-        .logo { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 70px; width: auto; filter: drop-shadow(0 0 8px rgba(34,211,238,0.5)); transition: transform 0.3s ease; }
-        .logo:hover .logo-img { transform: scale(1.05); }
-        .nav-menu { display: flex; list-style: none; gap: 35px; }
-        .nav-link { text-decoration: none; color: #4b5563; font-weight: 500; transition: color 0.3s ease; position: relative; cursor: pointer; background: none; border: none; font-size: 1rem; }
-        .nav-link:hover, .nav-link.active { color: #10B981; }
-        .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #10B981; transition: width 0.3s ease; }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .nav-actions { display: flex; align-items: center; gap: 20px; }
-        .btn-appointment { background: #10B981; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
-        .btn-appointment:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
-        .menu-toggle span { width: 25px; height: 3px; background: #10B981; display: block; transition: all 0.3s ease; }
 
         /* ===== HERO ===== */
         .hero { padding: 140px 0 80px; background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); position: relative; overflow: hidden; }
@@ -213,11 +155,8 @@ export default function HealthcarePlus() {
         .section-title { font-size: 40px; color: #1f2937; margin-bottom: 15px; }
         .section-description { font-size: 18px; color: #6b7280; max-width: 700px; margin: 0 auto 50px; }
         .about-description { font-size: 16px; color: #6b7280; margin-bottom: 30px; line-height: 1.8; }
-        .about-features { margin-bottom: 30px; }
         .about-feature-item { display: flex; gap: 15px; margin-bottom: 20px; }
         .check-icon { width: 30px; height: 30px; background: #10B981; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
-        .about-feature-item h4 { font-size: 18px; color: #1f2937; margin-bottom: 5px; }
-        .about-feature-item p { font-size: 14px; color: #6b7280; margin: 0; }
 
         /* ===== SERVICES ===== */
         .services-section { padding: 80px 0; background: #F9FAFB; }
@@ -232,26 +171,6 @@ export default function HealthcarePlus() {
         .service-text { color: #6b7280; font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
         .service-link { color: #10B981; text-decoration: none; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; transition: gap 0.3s ease; }
         .service-link:hover { gap: 10px; }
-
-        /* ===== DOCTORS ===== */
-        .doctors-section { padding: 80px 0; background: white; }
-        .doctors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .doctor-card { transition: transform 0.3s ease; }
-        .doctor-card:hover { transform: translateY(-10px); }
-        .doctor-image-wrapper { position: relative; width: 100%; height: 350px; overflow: hidden; border-radius: 15px; margin-bottom: 20px; }
-        .doctor-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-        .doctor-card:hover .doctor-image { transform: scale(1.1); }
-        .doctor-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(16,185,129,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
-        .doctor-card:hover .doctor-overlay { opacity: 1; }
-        .btn-view-profile { background: white; color: #10B981; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
-        .btn-view-profile:hover { transform: scale(1.05); }
-        .doctor-info { text-align: center; }
-        .doctor-name { font-size: 22px; color: #1f2937; margin-bottom: 8px; }
-        .doctor-specialty { font-size: 16px; color: #10B981; font-weight: 600; margin-bottom: 5px; }
-        .doctor-experience { font-size: 14px; color: #6b7280; margin-bottom: 10px; }
-        .doctor-rating { display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .star { color: #FCD34D; font-size: 16px; }
-        .rating-text { font-size: 14px; font-weight: 600; color: #1f2937; }
 
         /* ===== TESTIMONIALS ===== */
         .testimonials-section { padding: 80px 0; background: #F9FAFB; }
@@ -276,38 +195,6 @@ export default function HealthcarePlus() {
         .btn-outline-white { background: transparent; color: white; border: 2px solid white; }
         .btn-outline-white:hover { background: white; color: #10B981; }
 
-        /* ===== FOOTER ===== */
-        .footer { background: #0F172A; color: white; padding: 60px 0 0; }
-        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 50px; }
-        .footer-logo { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 24px; font-weight: bold; color: #10B981; }
-        .footer-logo .logo-icon { background: #10B981; color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 28px; }
-        .footer-description { color: #94A3B8; font-size: 15px; line-height: 1.8; margin-bottom: 25px; }
-        .footer-social { display: flex; gap: 12px; }
-        .footer-social .social-icon { background: rgba(255,255,255,0.1); }
-        .footer-social .social-icon:hover { background: #10B981; color: white; }
-        .footer-title { font-size: 20px; margin-bottom: 25px; color: white; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: #94A3B8; text-decoration: none; transition: all 0.3s ease; font-size: 15px; }
-        .footer-links a:hover { color: #10B981; padding-left: 5px; }
-        .footer-contact { list-style: none; }
-        .footer-contact li { color: #94A3B8; margin-bottom: 15px; font-size: 15px; display: flex; align-items: start; gap: 10px; }
-        .footer-bottom { border-top: 1px solid #334155; padding: 25px 0; display: flex; justify-content: space-between; align-items: center; }
-        .footer-bottom p { color: #94A3B8; font-size: 14px; margin: 0; }
-        .footer-bottom-links { display: flex; gap: 25px; }
-        .footer-bottom-links a { color: #94A3B8; text-decoration: none; font-size: 14px; transition: color 0.3s ease; }
-        .footer-bottom-links a:hover { color: #10B981; }
-
-        /* ===== WHATSAPP FLOAT ===== */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(37,211,102,0.4); z-index: 999; transition: all 0.3s ease; animation: pulse-whatsapp 2s infinite; }
-        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(37,211,102,0.6); }
-        @keyframes pulse-whatsapp { 0%, 100% { box-shadow: 0 5px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 5px 30px rgba(37,211,102,0.7); } }
-
-        /* ===== SCROLL TO TOP ===== */
-        .scroll-top { position: fixed; bottom: 100px; right: 30px; width: 50px; height: 50px; background: #10B981; color: white; border: none; border-radius: 50%; font-size: 20px; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 998; }
-        .scroll-top.show { opacity: 1; visibility: visible; }
-        .scroll-top:hover { background: #059669; transform: translateY(-5px); }
-
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
@@ -316,83 +203,22 @@ export default function HealthcarePlus() {
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
           .features-cards { grid-template-columns: repeat(2, 1fr); }
-          .footer-top { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
-          .top-bar { display: none; }
-          .menu-toggle { display: flex; }
-          .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background: white; flex-direction: column; padding: 40px; gap: 20px; transition: left 0.3s ease; box-shadow: 0 5px 20px rgba(0,0,0,0.1); z-index: 999; }
-          .nav-menu.active { left: 0; }
           .hero-content, .about-content { grid-template-columns: 1fr; text-align: center; }
           .hero-title { font-size: 36px; }
           .hero-buttons { justify-content: center; flex-wrap: wrap; }
           .hero-stats { justify-content: center; flex-wrap: wrap; }
           .features-cards { grid-template-columns: 1fr; }
-          .services-grid, .doctors-grid, .testimonials-grid { grid-template-columns: 1fr; }
+          .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
           .section-title { font-size: 32px; }
           .cta-title { font-size: 32px; }
           .cta-buttons { flex-direction: column; align-items: center; }
           .about-feature-item { text-align: left; }
-          .footer-top { grid-template-columns: 1fr; }
-          .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
           .image-badge { display: none; }
           .about-stats { position: static; margin-top: 20px; }
         }
       `}</style>
-
-      {/* ── TOP BAR ── */}
-      <div className="top-bar">
-        <div className="container">
-          <div className="top-bar-content">
-            <div className="contact-info">
-              <span><i>📞</i> +91 9860802592, +91 9158393859</span>
-              <span><i>✉️</i> vriddhicare@gmail.com</span>
-              <span><i>🕐</i> 24/7 Care & Emergency Support</span>
-            </div>
-            <div className="social-links">
-              <a href="#" className="social-icon">f</a>
-              <a href="#" className="social-icon">in</a>
-              <a href="#" className="social-icon">tw</a>
-              <a href="#" className="social-icon">ig</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── NAVBAR ── */}
-      <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
-        <div className="container">
-          <div className="nav-wrapper">
-            <a href="#home" className="logo" onClick={(e) => { e.preventDefault(); scrollTo('home'); }}>
-              <img src="/log.png" alt="Vriddhicare Logo" className="logo-img" />
-            </a>
-            <ul className={`nav-menu${menuOpen ? ' active' : ''}`}>
-              {[
-                { label: 'Home', href: '/', page: true },
-                { label: 'Services', href: '/services', page: true },
-                { label: 'About Us', href: '/aboutus', page: true },
-                { label: 'Contact', href: '/contact', page: true },
-              ].map((item) => (
-                <li key={item.label}>
-                  <Link href={item.href} className="nav-link" onClick={() => setMenuOpen(false)}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="nav-actions">
-              <Link href="/appointment" className="btn-appointment" style={{ textDecoration: 'none', display: 'inline-block' }}>Book Appointment</Link>
-              <button
-                className="menu-toggle"
-                onClick={() => setMenuOpen((o) => !o)}
-                aria-label="Toggle menu"
-              >
-                <span /><span /><span />
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* ── HERO ── */}
       <section className="hero" id="home">
@@ -415,9 +241,9 @@ export default function HealthcarePlus() {
                 </button>
               </div>
               <div className="hero-stats" ref={heroStatsRef}>
-                <StatCounter target={20} label="Years Experience" triggered={statsTriggered} />
-                <StatCounter target={50} label="Expert Doctors" triggered={statsTriggered} />
-                <StatCounter target={15000} label="Happy Patients" triggered={statsTriggered} />
+                <StatCounter target={7} label="Years Experience" triggered={statsTriggered} />
+                <StatCounter target={100} label="Certified Caregivers" triggered={statsTriggered} />
+                <StatCounter target={500} label="Happy Patients" triggered={statsTriggered} />
               </div>
             </div>
             <div className="hero-image">
@@ -507,9 +333,6 @@ export default function HealthcarePlus() {
                 <p style={{ marginBottom: '15px' }}>
                   With 7+ years of experience in patient care and elderly assistance, our team of 100+ qualified and government-certified nurses and caregivers have successfully cared for 500+ patients with dedication, dignity, and professionalism.
                 </p>
-                <p style={{ marginBottom: '25px' }}>
-                  We understand that every patient and elderly individual deserves personalized care, emotional support, and medical attention. Our trained healthcare professionals ensure safety, comfort, and well-being for your loved ones at home.
-                </p>
               </div>
 
               <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#1f2937', marginBottom: '15px' }}>Our Commitment</h3>
@@ -582,54 +405,12 @@ export default function HealthcarePlus() {
                 </div>
                 <h3 className="service-title">{s.title}</h3>
                 <p className="service-text">{s.text}</p>
-                <a href="#" className="service-link">Learn More →</a>
+                <Link href="/services" className="service-link">Learn More →</Link>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* ── DOCTORS ── */}
-      {/* <section className="doctors-section" id="doctors">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-badge">Certified Caregivers</span>
-            <h2 className="section-title">Meet Our Professional Staff</h2>
-            <p className="section-description">Our dedicated team of healthcare professionals is here to serve you</p>
-          </div>
-          <div className="doctors-grid">
-            {[
-              { id: 'doc-1', name: 'Priya Sharma', specialty: 'Senior Nurse', exp: '7 years experience', rating: '4.9', img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop' },
-              { id: 'doc-2', name: 'Ramesh Patel', specialty: 'Caregiver', exp: '5 years experience', rating: '4.8', img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop' },
-              { id: 'doc-3', name: 'Sunita Verma', specialty: 'Elder Care Specialist', exp: '8 years experience', rating: '5.0', img: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop' },
-            ].map((d) => (
-              <div
-                key={d.id}
-                className="doctor-card"
-                ref={registerCard(d.id)}
-                data-card-id={d.id}
-                style={cardStyle(d.id)}
-              >
-                <div className="doctor-image-wrapper">
-                  <img src={d.img} alt={d.name} className="doctor-image" />
-                  <div className="doctor-overlay">
-                    <button className="btn-view-profile">View Profile</button>
-                  </div>
-                </div>
-                <div className="doctor-info">
-                  <h3 className="doctor-name">{d.name}</h3>
-                  <p className="doctor-specialty">{d.specialty}</p>
-                  <p className="doctor-experience">{d.exp}</p>
-                  <div className="doctor-rating">
-                    <span className="star">★★★★★</span>
-                    <span className="rating-text">{d.rating}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* ── TESTIMONIALS ── */}
       <section className="testimonials-section" id="testimonials">
@@ -670,7 +451,9 @@ export default function HealthcarePlus() {
                 <div className="testimonial-rating">★★★★★</div>
                 <p className="testimonial-text">{t.text}</p>
                 <div className="testimonial-author">
-                  <img src={t.img} alt={t.name} className="author-image" />
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-500 font-bold">
+                    {t.name[0]}
+                  </div>
                   <div className="author-info">
                     <h4 className="author-name">{t.name}</h4>
                     <p className="author-type">Patient</p>
@@ -695,80 +478,6 @@ export default function HealthcarePlus() {
           </div>
         </div>
       </section>
-
-      {/* ── FOOTER ── */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-top">
-            <div>
-              <div className="footer-logo">
-                <span className="logo-icon">+</span>
-                <span>Vriddhicare</span>
-              </div>
-              <p className="footer-description">
-                Providing quality healthcare services with compassion and excellence. Your health is our priority.
-              </p>
-              <div className="footer-social">
-                <a href="#" className="social-icon">f</a>
-                <a href="#" className="social-icon">in</a>
-                <a href="#" className="social-icon">tw</a>
-                <a href="#" className="social-icon">ig</a>
-              </div>
-            </div>
-            <div>
-              <h4 className="footer-title">Quick Links</h4>
-              <ul className="footer-links">
-                {['Home', 'Services', 'About Us', 'Doctors', 'Testimonials', 'Contact'].map((l) => (
-                  <li key={l}><a href={`#${l.toLowerCase().replace(' ', '')}`}>{l}</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="footer-title">Services</h4>
-              <ul className="footer-links">
-                {['Home Patient Care', 'Elder Care Services', 'Nursing Care', 'Attendant Care', 'Emergency Support'].map((service) => (
-                  <li key={service}>
-                    <Link href="/services">{service}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="footer-title">Contact Info</h4>
-              <ul className="footer-contact">
-                <li><i>📍</i> 101, Vanashree Apartment, IT Park Road, Gayatri Nagar, Nagpur. 440022</li>
-                <li><i>📞</i> +91 9860802592, +91 9158393859</li>
-                <li><i>✉️</i> vriddhicare@gmail.com</li>
-                <li><i>🕐</i> 24/7 Care & Emergency Support</li>
-              </ul>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>© 2024 Vriddhicare. All rights reserved.</p>
-            <div className="footer-bottom-links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Cookie Policy</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      {/* ── WHATSAPP FLOAT ── */}
-      <a href="https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0" className="whatsapp-float" target="_blank" rel="noreferrer" title="Chat on WhatsApp">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <path d="M27.2 4.6C24.3 1.7 20.4 0 16.2 0C7.4 0 0.3 7.1 0.3 15.9C0.3 18.7 1 21.4 2.4 23.8L0.1 32L8.5 29.7C10.8 31 13.4 31.7 16.1 31.7C24.9 31.7 32 24.6 32 15.8C32 11.6 30.2 7.6 27.2 4.6ZM16.2 29C13.8 29 11.5 28.4 9.4 27.2L8.9 26.9L3.9 28.2L5.2 23.3L4.9 22.8C3.6 20.6 2.9 18.3 2.9 15.9C2.9 8.5 8.8 2.6 16.2 2.6C19.8 2.6 23.1 4 25.6 6.5C28.1 9 29.5 12.3 29.5 15.9C29.6 23.3 23.7 29 16.2 29ZM23.6 19.4C23.2 19.2 21.3 18.3 20.9 18.1C20.5 18 20.2 17.9 19.9 18.3C19.6 18.7 18.9 19.6 18.7 19.9C18.4 20.2 18.2 20.3 17.8 20.1C17.4 19.9 16 19.4 14.4 18C13.1 16.9 12.3 15.5 12 15.1C11.8 14.7 11.9 14.5 12.1 14.3C12.3 14.1 12.5 13.8 12.7 13.6C12.9 13.4 13 13.2 13.1 13C13.2 12.7 13.2 12.5 13.1 12.3C13 12.1 12.3 10.2 11.9 9.4C11.6 8.6 11.2 8.7 11 8.7C10.8 8.7 10.5 8.7 10.2 8.7C9.9 8.7 9.5 8.8 9.1 9.2C8.7 9.6 7.7 10.5 7.7 12.4C7.7 14.3 9.1 16.1 9.3 16.4C9.5 16.7 12.3 20.9 16.5 22.6C17.5 23.1 18.3 23.3 18.9 23.5C19.9 23.8 20.8 23.8 21.5 23.7C22.3 23.6 23.8 22.8 24.1 21.9C24.5 21 24.5 20.2 24.4 20.1C24.2 19.9 23.9 19.8 23.6 19.4Z" fill="white" />
-        </svg>
-      </a>
-
-      {/* ── SCROLL TO TOP ── */}
-      <button
-        className={`scroll-top${showScrollTop ? ' show' : ''}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Scroll to top"
-      >
-        ↑
-      </button>
-    </>
+    </div>
   );
 }

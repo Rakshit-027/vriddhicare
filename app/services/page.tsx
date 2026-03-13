@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 /* ========== COMPONENTS ========== */
 
@@ -70,15 +70,6 @@ const ServiceCard = ({ icon, title, availability, description, features }: any) 
 /* ========== MAIN PAGE ========== */
 
 export default function ServicesPage() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const services = [
     {
       category: "Home Patient Care Services",
@@ -167,63 +158,8 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 selection:bg-emerald-500 selection:text-white">
-      {/* ── TOP BAR ── */}
-      <div className="hidden lg:block bg-slate-900 text-white py-3 text-sm font-medium">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex gap-8 items-center">
-            <span className="flex items-center gap-2">
-              <span className="text-emerald-500">📞</span> +91 9860802592, 9158393859
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="text-emerald-500">✉️</span> vriddhicare@gmail.com
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="text-emerald-500 text-lg">🕐</span> 24/7 Care & Support
-            </span>
-          </div>
-          <div className="flex gap-4">
-            {['f', 'in', 'tw', 'ig'].map(s => (
-              <a key={s} href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 transition-all border border-white/10">{s}</a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ── NAVIGATION ── */}
-      <nav className={`sticky top-0 z-[1000] bg-white/80 backdrop-blur-xl transition-all duration-500 ${scrolled ? 'shadow-xl py-3 border-b border-gray-100' : 'py-6'}`}>
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <Link href="/" className="transition-transform active:scale-95">
-            <img src="/log.png" alt="Logo" className="h-12 md:h-16 w-auto" />
-          </Link>
-
-          <ul className={`fixed lg:static top-0 left-0 w-full lg:w-auto h-screen lg:h-auto bg-white/95 lg:bg-transparent backdrop-blur-3xl lg:backdrop-blur-0 flex flex-col lg:flex-row items-center justify-center lg:p-0 gap-10 lg:gap-12 transition-all duration-500 z-[1001] ${menuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
-            <button className="lg:hidden absolute top-8 right-8 text-3xl text-emerald-500" onClick={() => setMenuOpen(false)}>×</button>
-            {['Home', 'Services', 'About Us', 'Contact'].map((item) => (
-              <li key={item}>
-                <Link
-                  href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`}
-                  onClick={() => setMenuOpen(false)}
-                  className={`relative text-2xl lg:text-base font-bold transition-all hover:text-emerald-500 group ${item === 'Services' ? 'text-emerald-500' : 'text-slate-600'}`}
-                >
-                  {item}
-                  <span className={`absolute -bottom-2 left-0 h-1 bg-emerald-500 transition-all duration-300 ${item === 'Services' ? 'w-full' : 'w-0 group-hover:w-full'}`} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex items-center gap-6">
-            <Link href="/appointment" className="hidden sm:inline-flex px-8 py-3.5 bg-slate-900 text-white font-black rounded-2xl hover:bg-emerald-500 transition-all shadow-xl shadow-gray-200 hover:shadow-emerald-200 active:scale-95">Book Appointment</Link>
-            <button className="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 bg-gray-50 rounded-xl" onClick={() => setMenuOpen(true)}>
-              <span className="w-6 h-1 bg-emerald-500 rounded-full" />
-              <span className="w-4 h-1 bg-emerald-500 rounded-full" />
-              <span className="w-6 h-1 bg-emerald-500 rounded-full" />
-            </button>
-          </div>
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-white font-sans text-gray-900 selection:bg-emerald-500 selection:text-white pb-20">
+      
       {/* ── HERO ── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-emerald-50/50 via-white to-white py-24 md:py-32">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-30 pointer-events-none">
@@ -412,55 +348,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="bg-slate-900 text-white pt-32 pb-12 rounded-t-[100px]">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 pb-20 border-b border-white/5">
-            <div className="space-y-8">
-              <img src="/log.png" alt="Logo" className="h-20 brightness-0 invert" />
-              <p className="text-slate-400 text-lg font-medium leading-relaxed">Redefining home healthcare with expertise, empathy, and innovation since 2017.</p>
-              <div className="flex gap-4">
-                {['FB', 'IN', 'TW', 'IG'].map(s => (
-                  <div key={s} className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center font-black hover:bg-emerald-500 transition-all cursor-pointer border border-white/10">{s}</div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h4 className="text-2xl font-black mb-10">Navigation</h4>
-              <ul className="space-y-5 text-slate-400 font-bold text-lg">
-                {['Home', 'Services', 'About Us', 'Contact'].map(l => (
-                  <li key={l}><Link href="#" className="hover:text-emerald-500 transition-all">{l}</Link></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-2xl font-black mb-10">Offerings</h4>
-              <ul className="space-y-5 text-slate-400 font-bold text-lg">
-                {['Nursing Care', 'Elder Assist', 'ICU Home', 'Physiotherapy'].map(s => (
-                  <li key={s}><Link href="#" className="hover:text-emerald-500 transition-all">{s}</Link></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-2xl font-black mb-10">Headquarters</h4>
-              <ul className="space-y-6 text-slate-400 font-medium">
-                <li className="flex gap-4 italic font-bold text-blue-100">Vriddhicare Healthcare Services</li>
-                <li className="flex gap-4">📍 101, Vanashree Apartment, Nagpur. 440022</li>
-                <li className="flex gap-4">📞 +91 9860802592, 9158393859</li>
-                <li className="flex gap-4">🕐 24/7 Global Response</li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-12 flex flex-col md:flex-row justify-between items-center text-slate-500 font-bold gap-6">
-            <p>© 2026 Vriddhicare. Crafted for Excellence.</p>
-            <div className="flex gap-10">
-              <Link href="#" className="hover:text-white">Privacy</Link>
-              <Link href="#" className="hover:text-white">Terms</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-
       {/* ── FLOAT BUTTONS ── */}
       <a href="https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0" target="_blank" className="fixed bottom-8 right-8 w-20 h-20 bg-[#25D366] rounded-3xl flex items-center justify-center shadow-2xl z-[999] transition-transform hover:scale-110 active:scale-95 animate-bounce-slow">
         <span className="text-white text-4xl">💬</span>
@@ -468,7 +355,7 @@ export default function ServicesPage() {
 
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-32 right-10 w-14 h-14 bg-white text-slate-900 rounded-2xl flex items-center justify-center shadow-2xl transition-all duration-500 z-[998] hover:-translate-y-2 border border-gray-100 font-black ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+        className="fixed bottom-32 right-10 w-14 h-14 bg-white text-slate-900 rounded-2xl flex items-center justify-center shadow-2xl transition-all duration-500 z-[998] hover:-translate-y-2 border border-gray-100 font-black opacity-100"
       >
         ↑
       </button>
