@@ -18,8 +18,12 @@ export const metadata = {
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function RootLayout({ children }) {
+  // Replace this link when the user provides it
+  const whatsappLink = "https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0";
+
   return (
     <html lang="en">
       <body
@@ -27,6 +31,7 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         {children}
+        <WhatsAppButton link={whatsappLink} />
         <Footer />
       </body>
     </html>

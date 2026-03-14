@@ -349,16 +349,16 @@ export default function ServicesPage() {
       </section>
 
       {/* ── FLOAT BUTTONS ── */}
-      <a href="https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0" target="_blank" className="fixed bottom-8 right-8 w-20 h-20 bg-[#25D366] rounded-3xl flex items-center justify-center shadow-2xl z-[999] transition-transform hover:scale-110 active:scale-95 animate-bounce-slow">
+      {/* <a href="https://api.whatsapp.com/send/?phone=%2B919860802592&text&type=phone_number&app_absent=0" target="_blank" className="fixed bottom-8 right-8 w-20 h-20 bg-[#25D366] rounded-3xl flex items-center justify-center shadow-2xl z-[999] transition-transform hover:scale-110 active:scale-95 animate-bounce-slow">
         <span className="text-white text-4xl">💬</span>
-      </a>
+      </a> */}
 
-      <button
+      {/* <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="fixed bottom-32 right-10 w-14 h-14 bg-white text-slate-900 rounded-2xl flex items-center justify-center shadow-2xl transition-all duration-500 z-[998] hover:-translate-y-2 border border-gray-100 font-black opacity-100"
       >
         ↑
-      </button>
+      </button> */}
 
       <style jsx global>{`
         @keyframes bounce-slow {
