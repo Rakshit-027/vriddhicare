@@ -440,18 +440,24 @@ export default function HealthcarePlus() {
                 text: '"The caregivers were extremely professional and compassionate while taking care of my father after his surgery. Their dedication made a huge difference in his recovery."',
                 name: 'Rahul Sharma',
                 img: '',
+                rating: '★★★★☆',
+                post: 'Manewada,Nagpur',
               },
               {
                 id: 'test-2',
                 text: '"We were worried about leaving our elderly mother alone at home, but their caregiver treated her like family. We are very thankful for their support."',
                 name: 'Meena Patil',
                 img: '',
+                rating: '★★★★★',
+                post: 'Subhash Nagar,Nagpur',
               },
               {
                 id: 'test-3',
                 text: '"The nursing staff is very well trained and responsible. They took excellent care of my grandfather. Highly recommended."',
                 name: 'Amit Deshmukh',
                 img: '',
+                rating: '★★★★★',
+                post: 'Sadar,Nagpur',
               },
             ].map((t) => (
               <div
@@ -461,7 +467,7 @@ export default function HealthcarePlus() {
                 data-card-id={t.id}
                 style={cardStyle(t.id)}
               >
-                <div className="testimonial-rating">★★★★★</div>
+                <div className="testimonial-rating">{t.rating}</div>
                 <p className="testimonial-text">{t.text}</p>
                 <div className="testimonial-author">
                   <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-500 font-bold">
@@ -469,7 +475,7 @@ export default function HealthcarePlus() {
                   </div>
                   <div className="author-info">
                     <h4 className="author-name">{t.name}</h4>
-                    <p className="author-type">Patient</p>
+                    <p className="author-type">{t.post}</p>
                   </div>
                 </div>
               </div>

@@ -55,7 +55,7 @@ const Navbar = () => {
       <nav className={`sticky top-0 z-[1000] bg-white transition-all duration-500 ${scrolled ? 'shadow-xl py-2' : 'py-4 shadow-sm'}`}>
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link href="/" className="transition-transform active:scale-95">
-            <img src="/log.png" alt="Logo" className={`transition-all duration-500 ${scrolled ? 'h-10' : 'h-14'} w-auto`} />
+            <img src="/log.png" alt="Logo" className={`transition-all duration-500 ${scrolled ? 'h-20' : 'h-24'} w-auto`} />
           </Link>
 
           <ul className={`fixed lg:static top-0 left-0 w-full lg:w-auto h-screen lg:h-auto bg-white/95 lg:bg-transparent backdrop-blur-3xl lg:backdrop-blur-0 flex flex-col lg:flex-row items-center justify-center lg:p-0 gap-10 lg:gap-12 transition-all duration-500 z-[1001] ${menuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>

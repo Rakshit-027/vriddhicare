@@ -9,8 +9,8 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 pb-20 border-b border-white/5">
           <div className="space-y-8">
-            <img src="/log.png" alt="Logo" className="h-20 brightness-0 invert" />
-            <p className="text-slate-400 text-lg font-medium leading-relaxed">Redefining home healthcare with expertise, empathy, and innovation since 2017.</p>
+            <img src="/log.png" alt="Logo" className="h-40 brightness-0 invert" />
+            <p className="text-slate-400 text-lg font-medium leading-relaxed">Redefining home healthcare with expertise, empathy, and innovation since 2019.</p>
             <div className="flex gap-4">
               {[
                 { id: 'f', label: 'FB' },
