@@ -50,8 +50,8 @@ const ServiceCard = ({ icon, title, availability, description, features }: any) 
           ))}
         </div>
 
-        <Link 
-          href="/appointment" 
+        <Link
+          href="/appointment"
           className="group/btn relative overflow-hidden bg-slate-900 text-white py-5 rounded-2xl font-black text-lg flex items-center justify-center transition-all duration-300 hover:bg-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/30 active:scale-[0.98] w-full"
         >
           <span className="relative z-10 flex items-center gap-3">
@@ -79,7 +79,7 @@ export default function ServicesPage() {
       features: ["Injection administration", "IV fluids and medication", "Wound dressing", "Vital monitoring", "Post-surgery care", "Medical supervision"],
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/>
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z" />
         </svg>
       )
     },
@@ -91,7 +91,7 @@ export default function ServicesPage() {
       features: ["Medication management", "Physiotherapy assistance", "Mobility support", "Daily health monitoring", "Doctor coordination"],
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
         </svg>
       )
     },
@@ -103,7 +103,7 @@ export default function ServicesPage() {
       features: ["ICU-level monitoring", "Medical equipment handling", "Ventilator care assistance", "Continuous patient supervision"],
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
         </svg>
       )
     },
@@ -115,7 +115,7 @@ export default function ServicesPage() {
       features: ["Bathing and grooming", "Dressing assistance", "Mobility support", "Meal preparation", "Medication reminders"],
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
         </svg>
       )
     },
@@ -127,7 +127,7 @@ export default function ServicesPage() {
       features: ["Emotional support", "Friendly companionship", "Conversation and engagement", "Outdoor walks and activities"],
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
         </svg>
       )
     },
@@ -139,7 +139,7 @@ export default function ServicesPage() {
       features: ["Full-time caregivers", "Day & night assistance", "Health monitoring", "Emergency response support"],
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+          <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" /><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
         </svg>
       )
     },
@@ -151,7 +151,7 @@ export default function ServicesPage() {
       features: ["Feeding assistance", "Personal hygiene support", "Mobility assistance", "Bedridden patient care", "Home support activities"],
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          <path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
         </svg>
       )
     }
@@ -159,14 +159,14 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 selection:bg-emerald-500 selection:text-white pb-20">
-      
+
       {/* ── HERO ── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-emerald-50/50 via-white to-white py-24 md:py-32">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-30 pointer-events-none">
           <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-200 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-100 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
         </div>
-        
+
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -196,7 +196,7 @@ export default function ServicesPage() {
       {/* ── OVERVIEW ── */}
       <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-20 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -219,7 +219,7 @@ export default function ServicesPage() {
               ))}
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -246,7 +246,7 @@ export default function ServicesPage() {
             <span className="text-emerald-500 font-black uppercase tracking-widest text-sm mb-4 block">Our Specialties</span>
             <h2 className="text-4xl md:text-7xl font-black text-slate-900">Medical Excellence</h2>
           </div>
-          
+
           <div className="space-y-32">
             {Object.entries(
               services.reduce((acc, service) => {
@@ -317,7 +317,7 @@ export default function ServicesPage() {
             <span className="text-emerald-500 font-black uppercase tracking-widest text-sm mb-4 block">Our Process</span>
             <h2 className="text-4xl md:text-7xl font-black">How We Work</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             {[
               { num: "01", title: "Consultation", text: "In-depth health assessment by our experts." },

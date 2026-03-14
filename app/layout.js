@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Vriddhi Care - Professional Healthcare Services",
   description: "Experience compassionate, comprehensive medical care with our team of expert healthcare professionals.",
+  verification: {
+    google: "cdhJlCD4fvnAsEoHutGXXsrLOC2hX0znBqmSnDnFkrI",
+  },
 };
 
 import Navbar from "../components/Navbar";
