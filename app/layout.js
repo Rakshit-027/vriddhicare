@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://vriddhicare.com"),
+  metadataBase: new URL("https://www.vriddhicare.in"),
   title: {
     default: "Vriddhi Care | Professional Home Healthcare & Elder Care Services",
     template: "%s | Vriddhi Care",
@@ -24,7 +24,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://vriddhicare.com",
+    url: "https://www.vriddhicare.in",
     title: "Vriddhi Care | Professional Home Healthcare",
     description: "Professional home healthcare, nursing, and elder care services in Nagpur.",
     siteName: "Vriddhi Care",
@@ -52,8 +52,8 @@ const jsonLd = {
     {
       "@type": "MedicalOrganization",
       "name": "Vriddhi Care",
-      "url": "https://vriddhicare.com",
-      "logo": "https://vriddhicare.com/log.png",
+      "url": "https://www.vriddhicare.in",
+      "logo": "https://www.vriddhicare.in/log.png",
       "description": "Professional home healthcare, nursing, and elder care services in Nagpur.",
       "telephone": "+91-9860802592",
       "address": {
@@ -67,9 +67,9 @@ const jsonLd = {
     {
       "@type": "LocalBusiness",
       "name": "Vriddhi Care",
-      "image": "https://vriddhicare.com/log.png",
+      "image": "https://www.vriddhicare.in/log.png",
       "telephone": "+91-9158393859",
-      "url": "https://vriddhicare.com",
+      "url": "https://www.vriddhicare.in",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "101, Vanashree Apartment",

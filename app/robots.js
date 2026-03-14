@@ -5,7 +5,7 @@ export default function robots() {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://vriddhicare.com/sitemap.xml',
+    sitemap: 'https://www.vriddhicare.in/sitemap.xml',
   }
 }
 

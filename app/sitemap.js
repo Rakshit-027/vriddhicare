@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://vriddhicare.com'; // Replace with your actual domain
+  const baseUrl = 'https://www.vriddhicare.in'; // Replace with your actual domain
 
   return [
     {
