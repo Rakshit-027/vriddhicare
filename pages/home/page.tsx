@@ -142,15 +142,15 @@ export default function HealthcarePlus() {
         /* ===== ABOUT ===== */
         .about-section { padding: 100px 0; background: white; }
         .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .about-image { position: relative; }
+        .about-image { position: relative; margin-right: 20px; margin-bottom: 30px; }
         .facility-image { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(16,185,129,0.15); }
-        .experience-badge { position: absolute; top: 30px; right: 30px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(16,185,129,0.3); }
-        .experience-badge h3 { font-size: 40px; margin-bottom: 5px; }
-        .experience-badge p { font-size: 14px; margin: 0; }
-        .about-stats { position: absolute; bottom: 30px; left: 30px; display: flex; gap: 20px; }
-        .about-stat { background: white; padding: 20px 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
-        .about-stat h4 { font-size: 28px; color: #10B981; margin-bottom: 5px; }
-        .about-stat p { font-size: 13px; color: #6b7280; margin: 0; }
+        .experience-badge { position: absolute; top: 40px; right: -20px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(16,185,129,0.3); z-index: 2; }
+        .experience-badge h3 { font-size: 32px; margin-bottom: 5px; font-weight: bold; }
+        .experience-badge p { font-size: 13px; margin: 0; font-weight: 500; }
+        .about-stats { position: absolute; bottom: -25px; left: 40px; display: flex; gap: 20px; z-index: 2; }
+        .about-stat { background: white; padding: 18px 25px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); text-align: center; }
+        .about-stat h4 { font-size: 26px; color: #10B981; margin-bottom: 4px; font-weight: bold; }
+        .about-stat p { font-size: 13px; color: #4b5563; margin: 0; font-weight: 500; }
         .section-badge { display: inline-block; background: #d1fae5; color: #065f46; padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 600; margin-bottom: 15px; }
         .section-title { font-size: 40px; color: #1f2937; margin-bottom: 15px; }
         .section-description { font-size: 18px; color: #4b5563; max-width: 700px; margin: 0 auto 50px; }
@@ -225,11 +225,16 @@ export default function HealthcarePlus() {
           .cta-title { font-size: 28px; }
           .cta-text { font-size: 16px; }
           .cta-buttons { flex-direction: column; gap: 15px; }
+          .about-image { margin-right: 0; margin-bottom: 0; }
           .about-text { text-align: left; }
           .about-feature-item { align-items: flex-start; }
           .image-badge { display: none; }
+          .experience-badge { top: 10px; right: 10px; padding: 12px; border-radius: 10px; }
+          .experience-badge h3 { font-size: 24px; margin-bottom: 2px; }
+          .experience-badge p { font-size: 11px; }
           .about-stats { position: static; margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; justify-content: center; }
           .about-stat { padding: 15px; }
+          .about-stat h4 { font-size: 24px; }
         }
       `}</style>
 
@@ -338,7 +343,7 @@ export default function HealthcarePlus() {
             </div>
             <div className="about-text">
               <span className="section-badge">About Us</span>
-              <h2 className="section-title" style={{ fontSize: '32px', lineHeight: '1.2' }}>Compassionate Home Patient Care & Elder Care Services</h2>
+              <h2 className="section-title">Compassionate Home Patient Care & Elder Care Services</h2>
               <div className="about-description">
                 <p style={{ marginBottom: '15px' }}>
                   Providing professional, compassionate, and reliable home healthcare and elder care services for families who want the best care for their loved ones in the comfort of their home.

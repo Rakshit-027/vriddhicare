@@ -320,10 +320,10 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             {[
-              { num: "01", title: "Consultation", text: "In-depth health assessment by our experts." },
-              { num: "02", title: "Strategy", text: "Designing a personalized 24/7 care roadmap." },
-              { num: "03", title: "Deployment", text: "Assigning the most compatible caregiver." },
-              { num: "04", title: "Optimization", text: "Real-time monitoring and medical feedback." }
+              { num: "01", title: "Assessment", text: "Understanding the client’s health condition, daily needs, and lifestyle through a detailed assessment." },
+              { num: "02", title: "Care Planning", text: "Creating a customized care plan tailored to the individual’s medical and personal requirements." },
+              { num: "03", title: "Caregiving", text: "Providing professional caregivers to assist with daily activities and health support at home." },
+              { num: "04", title: "Monitoring & Review", text: "Regularly monitoring progress and adjusting the care plan to ensure the best outcomes." }
             ].map((step, idx) => (
               <div key={idx} className="flex flex-col items-center md:items-start group">
                 <div className="text-7xl font-black text-emerald-500/20 mb-6 group-hover:text-emerald-500/100 transition-colors duration-500">
