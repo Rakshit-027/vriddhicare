@@ -40,12 +40,12 @@ const Navbar = () => {
           </div>
           <div className="flex gap-4">
             {[
-              { id: 'f', label: 'FB' },
-              { id: 'in', label: 'IN' },
-              { id: 'tw', label: 'TW' },
-              { id: 'ig', label: 'IG' }
+              { id: 'f', label: 'FB', link: 'https://www.facebook.com/profile.php?viewas=100000686899395&id=61579528226152' },
+              { id: 'in', label: 'IN', link: 'https://linkedin.com' },
+              { id: 't', label: 'TW', link: 'https://twitter.com' },
+              { id: 'i', label: 'IG', link: 'https://www.instagram.com/vriddhicare?igsh=eWhodnkxNmlzbjlj' }
             ].map(s => (
-              <a key={s.id} href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 transition-all border border-white/10 text-[10px] font-bold">{s.label}</a>
+              <a key={s.id} href={s.link} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 transition-all border border-white/10 text-[10px] font-bold">{s.label}</a>
             ))}
           </div>
         </div>
