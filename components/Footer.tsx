@@ -11,17 +11,28 @@ const Footer = () => {
           <div className="space-y-6">
             <img src="/log.png" alt="Logo" className="h-28 lg:h-32 w-auto brightness-0 invert lg:-mt-6 -ml-2" />
             <p className="text-slate-400 text-lg font-medium leading-relaxed">Redefining home healthcare with expertise, empathy, and innovation since 2019.</p>
+
             <div className="flex gap-4">
               {[
-                { id: 'f', label: 'FB' },
-                { id: 'in', label: 'IN' },
-                { id: 't', label: 'TW' },
-                { id: 'i', label: 'IG' }
+                { id: 'f', label: 'FB', link: 'https://www.facebook.com/profile.php?viewas=100000686899395&id=61579528226152' },
+                { id: 'in', label: 'IN', link: 'https://linkedin.com' },
+                { id: 't', label: 'TW', link: 'https://twitter.com' },
+                { id: 'i', label: 'IG', link: 'https://www.instagram.com/vriddhicare?igsh=eWhodnkxNmlzbjlj' }
               ].map(s => (
-                <div key={s.id} className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center font-black hover:bg-emerald-500 transition-all cursor-pointer border border-white/10 text-[10px]">{s.label}</div>
+                <a
+                  key={s.id}
+                  href={s.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center font-black hover:bg-emerald-500 transition-all cursor-pointer border border-white/10 text-[10px]"
+                >
+                  {s.label}
+                </a>
               ))}
             </div>
+
           </div>
+
           <div>
             <h4 className="text-2xl font-black mb-10">Navigation</h4>
             <ul className="space-y-5 text-slate-400 font-bold text-lg">
@@ -35,6 +46,7 @@ const Footer = () => {
               ))}
             </ul>
           </div>
+
           <div>
             <h4 className="text-2xl font-black mb-10">Offerings</h4>
             <ul className="space-y-5 text-slate-400 font-bold text-lg">
@@ -43,6 +55,7 @@ const Footer = () => {
               ))}
             </ul>
           </div>
+
           <div>
             <h4 className="text-2xl font-black mb-10">Headquarters</h4>
             <ul className="space-y-6 text-slate-400 font-medium">
@@ -53,6 +66,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+
         <div className="pt-12 flex flex-col md:flex-row justify-between items-center text-slate-500 font-bold gap-6">
           <p>© 2026 Vriddhicare. Crafted for Excellence.</p>
           <div className="flex gap-10">
@@ -60,6 +74,7 @@ const Footer = () => {
             <Link href="#" className="hover:text-white">Terms</Link>
           </div>
         </div>
+
       </div>
     </footer>
   );

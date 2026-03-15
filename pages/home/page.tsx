@@ -262,7 +262,7 @@ export default function HealthcarePlus() {
             <div className="hero-image">
               <div className="image-wrapper">
                 <img
-                  src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&h=700&fit=crop"
+                  src="/assets/image1.jpeg"
                   alt="Healthcare Professional"
                   className="main-image"
                 />
@@ -323,7 +323,7 @@ export default function HealthcarePlus() {
           <div className="about-content">
             <div className="about-image">
               <img
-                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=500&fit=crop"
+                src="/assets/image3.jpeg"
                 alt="Modern Hospital"
                 className="facility-image"
               />

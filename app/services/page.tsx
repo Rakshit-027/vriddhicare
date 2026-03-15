@@ -227,7 +227,7 @@ export default function ServicesPage() {
           >
             <div className="absolute inset-0 bg-emerald-500 rounded-[40px] rotate-3 -z-10 opacity-10 group-hover:rotate-6 transition-transform" />
             <img
-              src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=800&fit=crop"
+              src="/assets/image2.jpeg"
               alt="Home Care"
               className="rounded-[40px] shadow-2xl relative z-10 w-full"
             />
